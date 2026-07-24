@@ -51,23 +51,48 @@ export default function Hero() {
             </div>
           </div>
           <div className="flex justify-center lg:justify-end">
-            <div className="bg-white p-8 rounded-[40px] shadow-2xl w-full max-w-md border border-gray-100">
-              <h3 className="text-2xl font-bold text-dark-charcoal mb-6 text-center">Start Your Construction Journey</h3>
+            <div className="bg-white/95 backdrop-blur-md p-8 rounded-3xl shadow-2xl w-full max-w-md border border-slate-100">
+              <h3 className="text-2xl font-extrabold text-slate-900 mb-1 text-center tracking-tight">
+                Start Your Construction Journey
+              </h3>
+              <p className="text-slate-500 text-xs font-medium text-center mb-6">
+                Get a free quote &amp; consultation from Bangalore experts
+              </p>
+
               <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                 <div>
-                  <label className="block text-xs font-bold text-gray-400 uppercase mb-1 ml-1">Full Name*</label>
-                  <input className="w-full bg-gray-50 border-gray-200 rounded-2xl p-4 focus:ring-primary-orange focus:border-primary-orange" placeholder="Enter your name" type="text" />
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 ml-1">
+                    Full Name*
+                  </label>
+                  <input
+                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3.5 text-slate-900 text-sm font-medium placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-orange/40 focus:border-primary-orange transition-all"
+                    placeholder="Enter your full name"
+                    type="text"
+                    required
+                  />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-gray-400 uppercase mb-1 ml-1">Mobile Number*</label>
-                  <input className="w-full bg-gray-50 border-gray-200 rounded-2xl p-4 focus:ring-primary-orange focus:border-primary-orange" placeholder="Enter mobile number" type="tel" />
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 ml-1">
+                    Mobile Number*
+                  </label>
+                  <input
+                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3.5 text-slate-900 text-sm font-medium placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-orange/40 focus:border-primary-orange transition-all"
+                    placeholder="Enter 10-digit mobile number"
+                    type="tel"
+                    required
+                  />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-gray-400 uppercase mb-1 ml-1">Property Location*</label>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 ml-1">
+                    Property Location*
+                  </label>
                   <LocationAutocomplete />
                 </div>
-                <button className="w-full bg-primary-orange text-white py-5 rounded-full font-bold text-lg shadow-lg hover:bg-orange-600 transition-colors mt-4" type="submit">
-                  Talk to an Expert
+                <button
+                  className="w-full bg-primary-orange hover:bg-orange-600 text-white font-extrabold text-base uppercase tracking-wider py-4 rounded-2xl shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center justify-center gap-2 mt-4"
+                  type="submit"
+                >
+                  Talk to an Expert <span className="text-lg">→</span>
                 </button>
               </form>
             </div>

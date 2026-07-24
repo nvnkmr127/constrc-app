@@ -1,92 +1,183 @@
 export default function Testimonials() {
   return (
     <>
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="py-16 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-dark-charcoal mb-4">Turn Your Vision into Reality - In Just a Few Simple Steps</h2>
-            <p className="text-slate-500 font-medium">Experience expert construction tailored to your style, budget, and lifestyle - effortlessly.</p>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Step 1 */}
-              <div className="bg-gray-50 p-8 rounded-[40px] border border-gray-100 shadow-sm">
-                <div className="w-12 h-12 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6">1</div>
-                <h4 className="text-xl font-bold text-dark-charcoal mb-2">Book Consultation</h4>
-                <div className="w-full h-24 bg-white/50 rounded-2xl mt-4 flex items-center justify-center opacity-40">
-                  <span className="material-symbols-outlined text-4xl text-primary-orange">calendar_month</span>
-                </div>
-              </div>
-              {/* Step 2 */}
-              <div className="bg-gray-50 p-8 rounded-[40px] border border-gray-100 shadow-sm">
-                <div className="w-12 h-12 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6">2</div>
-                <h4 className="text-xl font-bold text-dark-charcoal mb-2">Meet Designer</h4>
-                <div className="w-full h-24 bg-white/50 rounded-2xl mt-4 flex items-center justify-center opacity-40">
-                  <span className="material-symbols-outlined text-4xl text-primary-orange">person</span>
-                </div>
-              </div>
-              {/* Step 3 */}
-              <div className="bg-gray-50 p-8 rounded-[40px] border border-gray-100 shadow-sm">
-                <div className="w-12 h-12 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6">3</div>
-                <h4 className="text-xl font-bold text-dark-charcoal mb-2">Share your requirements</h4>
-                <div className="w-full h-24 bg-white/50 rounded-2xl mt-4 flex items-center justify-center opacity-40">
-                  <span className="material-symbols-outlined text-4xl text-primary-orange">assignment</span>
-                </div>
-              </div>
-              {/* Step 4 */}
-              <div className="bg-gray-50 p-8 rounded-[40px] border border-gray-100 shadow-sm">
-                <div className="w-12 h-12 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6">4</div>
-                <h4 className="text-xl font-bold text-dark-charcoal mb-2">Compare &amp; Finalise</h4>
-                <div className="w-full h-24 bg-white/50 rounded-2xl mt-4 flex items-center justify-center opacity-40">
-                  <span className="material-symbols-outlined text-4xl text-primary-orange">compare_arrows</span>
-                </div>
-              </div>
-              {/* Step 5 */}
-              <div className="bg-gray-50 p-8 rounded-[40px] border border-gray-100 shadow-sm">
-                <div className="w-12 h-12 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6">5</div>
-                <h4 className="text-xl font-bold text-dark-charcoal mb-2">Get quality checked</h4>
-                <div className="w-full h-24 bg-white/50 rounded-2xl mt-4 flex items-center justify-center opacity-40">
-                  <span className="material-symbols-outlined text-4xl text-primary-orange">verified</span>
-                </div>
-              </div>
-              {/* Step 6 */}
-              <div className="bg-gray-50 p-8 rounded-[40px] border border-gray-100 shadow-sm">
-                <div className="w-12 h-12 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6">6</div>
-                <h4 className="text-xl font-bold text-dark-charcoal mb-2">Move-In Made Beautiful</h4>
-                <div className="w-full h-24 bg-white/50 rounded-2xl mt-4 flex items-center justify-center opacity-40">
-                  <span className="material-symbols-outlined text-4xl text-primary-orange">home</span>
-                </div>
-              </div>
+          <div className="bg-[#FAF7F2] rounded-3xl md:rounded-[50px] md:rounded-tr-[90px] p-6 md:p-12 border border-orange-100/80 shadow-xs">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl md:text-4xl font-extrabold text-dark-charcoal mb-2 tracking-tight">
+                Turn Your Vision into Reality - In Just a Few Simple Steps
+              </h2>
+              <p className="text-slate-500 text-xs md:text-sm font-medium">
+                Experience expert-designed construction &amp; interiors tailored to your style, budget, and lifestyle - effortlessly.
+              </p>
             </div>
-            {/* Video Testimonial Card */}
-            <div className="bg-white p-6 rounded-[40px] shadow-2xl border border-gray-100 flex flex-col">
-              <div className="relative rounded-[30px] overflow-hidden mb-6 h-64">
-                <img
-                  alt="Kavita's Home"
-                  className="w-full h-full object-cover"
-                  src="/images/indian_professional_woman_1.png"
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                  <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center text-primary-orange shadow-lg cursor-pointer hover:scale-110 transition-transform">
-                    <span className="material-symbols-outlined text-4xl">play_arrow</span>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+              {/* Left Side 6 Steps Grid */}
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Step 1 */}
+                <div className="bg-white p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-xs relative min-h-[170px] flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all">
+                  <div className="flex justify-between items-start">
+                    <div className="w-9 h-9 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-sm shadow-sm">
+                      1
+                    </div>
+                    {/* Illustration Graphic 1 */}
+                    <div className="w-14 h-12 flex items-center justify-end text-primary-orange/40">
+                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                    </div>
                   </div>
+                  <h4 className="text-base md:text-lg font-bold text-dark-charcoal mt-6 leading-snug">
+                    Book<br />Consultation
+                  </h4>
+                </div>
+
+                {/* Step 2 */}
+                <div className="bg-white p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-xs relative min-h-[170px] flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all">
+                  <div className="flex justify-between items-start">
+                    <div className="w-9 h-9 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-sm shadow-sm">
+                      2
+                    </div>
+                    {/* Illustration Graphic 2 */}
+                    <div className="w-14 h-12 flex items-center justify-end text-primary-orange/40">
+                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <h4 className="text-base md:text-lg font-bold text-dark-charcoal mt-6 leading-snug">
+                    Meet Designer
+                  </h4>
+                </div>
+
+                {/* Step 3 */}
+                <div className="bg-white p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-xs relative min-h-[170px] flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all">
+                  <div className="flex justify-between items-start">
+                    <div className="w-9 h-9 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-sm shadow-sm">
+                      3
+                    </div>
+                    {/* Illustration Graphic 3 */}
+                    <div className="w-14 h-12 flex items-center justify-end text-primary-orange/40">
+                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                      </svg>
+                    </div>
+                  </div>
+                  <h4 className="text-base md:text-lg font-bold text-dark-charcoal mt-6 leading-snug">
+                    Share your<br />requirements
+                  </h4>
+                </div>
+
+                {/* Step 4 */}
+                <div className="bg-white p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-xs relative min-h-[170px] flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all">
+                  <div className="flex justify-between items-start">
+                    <div className="w-9 h-9 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-sm shadow-sm">
+                      4
+                    </div>
+                    {/* Illustration Graphic 4 */}
+                    <div className="w-14 h-12 flex items-center justify-end text-primary-orange/40">
+                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <h4 className="text-base md:text-lg font-bold text-dark-charcoal mt-6 leading-snug">
+                    Compare &amp;<br />Finalise
+                  </h4>
+                </div>
+
+                {/* Step 5 */}
+                <div className="bg-white p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-xs relative min-h-[170px] flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all">
+                  <div className="flex justify-between items-start">
+                    <div className="w-9 h-9 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-sm shadow-sm">
+                      5
+                    </div>
+                    {/* Illustration Graphic 5 */}
+                    <div className="w-14 h-12 flex items-center justify-end text-primary-orange/40">
+                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <h4 className="text-base md:text-lg font-bold text-dark-charcoal mt-6 leading-snug">
+                    Get quality<br />checked
+                  </h4>
+                </div>
+
+                {/* Step 6 */}
+                <div className="bg-white p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-xs relative min-h-[170px] flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all">
+                  <div className="flex justify-between items-start">
+                    <div className="w-9 h-9 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-sm shadow-sm">
+                      6
+                    </div>
+                    {/* Illustration Graphic 6 */}
+                    <div className="w-14 h-12 flex items-center justify-end text-primary-orange/40">
+                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                      </svg>
+                    </div>
+                  </div>
+                  <h4 className="text-base md:text-lg font-bold text-dark-charcoal mt-6 leading-snug">
+                    Move-In Made<br />Beautiful
+                  </h4>
                 </div>
               </div>
-              <div className="text-center flex-grow">
-                <p className="text-slate-500 text-sm mb-4">They transformed their house into a dream home with Screw Wood Construction</p>
-                <h5 className="text-2xl font-bold text-dark-charcoal mb-6">Kavita</h5>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-gray-100 pt-6 text-center sm:text-left">
-                  <div>
-                    <p className="text-[10px] uppercase font-bold text-gray-400">Budget</p>
-                    <p className="font-bold text-dark-charcoal">₹4.5 lacs</p>
+
+              {/* Right Side Video Testimonial Card */}
+              <div className="bg-white p-5 md:p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-lg flex flex-col justify-between">
+                <div className="relative rounded-2xl overflow-hidden mb-4 h-52 group">
+                  <img
+                    alt="Kavita's Interior Transformation"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    src="/images/indian_professional_woman_1.png"
+                  />
+                  {/* Top Branding Badges */}
+                  <div className="absolute top-3 left-3 bg-white/95 px-2.5 py-1 rounded-full text-[10px] font-extrabold text-primary-orange shadow-sm flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary-orange"></span>
+                    Screw Wood
                   </div>
-                  <div>
-                    <p className="text-[10px] uppercase font-bold text-gray-400">Home</p>
-                    <p className="font-bold text-dark-charcoal">3BHK</p>
+                  <div className="absolute top-3 right-3 bg-white/95 px-2.5 py-1 rounded-full text-[10px] font-extrabold text-dark-charcoal shadow-sm">
+                    Verified
                   </div>
-                  <div>
-                    <p className="text-[10px] uppercase font-bold text-gray-400">City</p>
-                    <p className="font-bold text-dark-charcoal">Koramangala, BLR</p>
+
+                  {/* Center Play Button Overlay */}
+                  <div className="absolute inset-0 bg-black/25 flex items-center justify-center group-hover:bg-black/35 transition-colors">
+                    <div className="w-14 h-14 bg-primary-orange text-white rounded-full flex items-center justify-center shadow-xl cursor-pointer hover:scale-110 transition-transform">
+                      <svg className="w-7 h-7 fill-current ml-0.5" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Bottom Image Overlay Text */}
+                  <div className="absolute bottom-3 left-4 right-4">
+                    <span className="text-2xl font-black text-white tracking-tight drop-shadow-lg">
+                      Screw Wood Homes
+                    </span>
+                  </div>
+                </div>
+
+                <div className="text-center flex-grow flex flex-col justify-between">
+                  <p className="text-slate-500 text-xs font-medium px-2 mb-3 leading-relaxed">
+                    They transformed their house into a dream home with Screw Wood Construction
+                  </p>
+                  <h5 className="text-xl font-extrabold text-dark-charcoal mb-4">Kavita</h5>
+
+                  <div className="grid grid-cols-3 border-t border-slate-100 pt-4 text-center">
+                    <div>
+                      <p className="text-[10px] font-semibold uppercase text-slate-400 tracking-wider">Budget</p>
+                      <p className="font-extrabold text-sm text-dark-charcoal mt-0.5">₹4.5 lacs</p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-semibold uppercase text-slate-400 tracking-wider">Home</p>
+                      <p className="font-extrabold text-sm text-dark-charcoal mt-0.5">3BHK</p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-semibold uppercase text-slate-400 tracking-wider">City</p>
+                      <p className="font-extrabold text-sm text-dark-charcoal mt-0.5">Bangalore</p>
+                    </div>
                   </div>
                 </div>
               </div>

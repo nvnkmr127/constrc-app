@@ -162,11 +162,11 @@ export default function LocationAutocomplete({
               setShowDropdown(true);
             }
           }}
-          placeholder="Enter location (e.g. Koramangala, Whitefield)"
+          placeholder="Enter location (e.g. Koramangala)"
           required={required}
-          className="w-full bg-gray-50 border border-gray-200 rounded-2xl p-4 pl-11 focus:ring-primary-orange focus:border-primary-orange text-dark-charcoal font-medium transition-all"
+          className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3.5 pl-11 text-slate-900 text-sm font-medium placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-orange/40 focus:border-primary-orange transition-all"
         />
-        <div className="absolute left-4 text-gray-400 pointer-events-none">
+        <div className="absolute left-3.5 text-primary-orange pointer-events-none flex items-center">
           <svg className="w-5 h-5 text-primary-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
@@ -183,8 +183,8 @@ export default function LocationAutocomplete({
           </svg>
         </div>
       </div>
-      <span className="text-[10px] text-gray-400 ml-1 mt-1 block">
-        📍 Restricted to Bangalore & surrounding 25km radius
+      <span className="text-[11px] font-medium text-slate-400 ml-1 mt-1 block">
+        📍 Restricted to Bangalore &amp; 25km radius
       </span>
 
       {!isGoogleLoaded && showDropdown && suggestions.length > 0 && (

@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
+import Brands from "@/components/Brands";
 import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import CostEstimator from "@/components/CostEstimator";
@@ -20,6 +21,7 @@ export default function Home() {
       <main>
         <Hero />
         <Stats />
+        <Brands />
         <Services />
         <WhyChooseUs />
         <CostEstimator />

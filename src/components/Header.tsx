@@ -1,40 +1,127 @@
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navItems = [
+    { name: 'Home', href: '/' },
+    { name: 'How It Works', href: '/how-it-works' },
+    { name: 'Services', href: '/services' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'News', href: '/news' },
+    { name: 'Contact', href: '/contact' },
+  ];
+
   return (
-    <header className="absolute top-0 left-0 w-full z-50 px-4 py-6">
-      <nav className="max-w-7xl mx-auto flex justify-between items-center bg-white/10 backdrop-blur-md rounded-full px-8 py-4 border border-white/20">
-        <div className="flex items-center space-x-2">
-          <img
-            alt="Logo"
-            className="w-10 h-10"
-            src="https://placehold.co/150x50/FFF?text=Screw+Wood/AB6AXuAB2rZApaVuAYKLKP6S8Wb1UDfX8e17U900MxFflhJlW_fe27dsx3SKg795jgxT8bm-UHjHWhMOWO-gB20IUDMfSVBjY1gmOqJt_Bctb8W0nP_Xb8AYip16i84Qgr5mY6eTmoFv_kmCEbpjeqbDuSme5RJLu5oFVoQFfyD-iw3CKL-_YqfXZ0Ck-GrCUTocMbIHVYDLpVOxQ5ojHD7bsF2XGGrwPfHxPIASiEtNMQ3JL0Ni8buce82tEl7tKOOrX97RZrD8araOklCD"
-          />
-          <span className="text-white text-2xl font-bold tracking-tight">Screw Wood</span>
-        </div>
-        <ul className="hidden md:flex space-x-8 text-white font-medium">
-          <li><Link href="#" className="hover:text-primary-orange">Home</Link></li>
-          <li><Link href="#" className="hover:text-primary-orange">Services</Link></li>
-          <li><Link href="#" className="hover:text-primary-orange">Projects</Link></li>
-          <li><Link href="#" className="hover:text-primary-orange">News</Link></li>
-          <li><Link href="#" className="hover:text-primary-orange">Contact</Link></li>
-        </ul>
-        <div className="flex items-center space-x-2 md:space-x-4">
-          <button className="hidden md:block text-white">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+    <header className="fixed top-0 left-0 w-full z-50 px-4 py-4 transition-all duration-300">
+      <nav
+        className={`max-w-7xl mx-auto flex justify-between items-center rounded-full px-6 md:px-8 py-3.5 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-slate-900/95 backdrop-blur-md border border-slate-700/60 shadow-xl'
+            : 'bg-white/10 backdrop-blur-md border border-white/20'
+        }`}
+      >
+        {/* Brand Logo */}
+        <Link href="/" className="flex items-center space-x-3 group">
+          <div className="w-10 h-10 rounded-full bg-primary-orange flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V11m0 0V7m0 4h4m-4 0H7" />
             </svg>
-          </button>
-          <Link href="#" className="hidden md:flex bg-primary-orange text-white px-6 py-2 rounded-full font-bold items-center gap-2">
-            GET A QUOTE <span className="bg-black/20 rounded-full p-1 text-xs">→</span>
+          </div>
+          <span className="text-white text-xl font-extrabold tracking-tight">
+            Screw <span className="text-primary-orange">Wood</span>
+          </span>
+        </Link>
+
+        {/* Desktop Nav Links */}
+        <ul className="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-200">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <li key={item.name}>
+                <Link
+                  href={item.href}
+                  className={`transition-colors duration-200 hover:text-primary-orange ${
+                    isActive ? 'text-primary-orange font-bold' : ''
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* Action Button & Mobile Toggle */}
+        <div className="flex items-center space-x-3">
+          <Link
+            href="/contact"
+            className="hidden sm:flex bg-primary-orange hover:bg-orange-600 text-white px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider items-center gap-2 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+          >
+            Get a Quote <span className="bg-black/20 rounded-full p-0.5 text-[10px]">→</span>
           </Link>
-          <button className="text-white">
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+
+          {/* Hamburger Icon */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden text-white p-2 rounded-lg hover:bg-slate-800 focus:outline-none"
+            aria-label="Toggle Navigation Menu"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+              )}
             </svg>
           </button>
         </div>
       </nav>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="md:hidden max-w-7xl mx-auto mt-2 bg-black/80 backdrop-blur-md border border-white/20 rounded-3xl p-6 shadow-2xl space-y-4">
+          <ul className="space-y-3 text-slate-200 font-semibold text-base">
+            {navItems.map((item) => (
+              <li key={item.name}>
+                <Link
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block py-2 px-4 rounded-xl hover:bg-slate-800 hover:text-primary-orange transition-colors"
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link
+            href="/contact"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block text-center w-full bg-primary-orange hover:bg-orange-600 text-white font-bold py-3 rounded-2xl uppercase tracking-wider text-sm shadow-md"
+          >
+            Get a Quote →
+          </Link>
+        </div>
+      )}
     </header>
   );
 }
