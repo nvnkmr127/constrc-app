@@ -3,6 +3,13 @@ import PageHero from "@/components/PageHero";
 import Blog from "@/components/Blog";
 import Footer from "@/components/Footer";
 
+export const metadata = {
+  title: "News & Insights",
+  description:
+    "Construction guides, home building tips and company news from Screw Wood.",
+  alternates: { canonical: "/news" },
+};
+
 export default function NewsPage() {
   return (
     <>

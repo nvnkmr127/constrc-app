@@ -15,6 +15,7 @@ import { Projects } from './collections/Projects'
 import { Services } from './collections/Services'
 import { Posts } from './collections/Posts'
 import { Testimonials } from './collections/Testimonials'
+import { Users } from './collections/Users'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -24,6 +25,9 @@ export default buildConfig({
     user: 'users',
     meta: {
       titleSuffix: '- Screw Wood Admin',
+    },
+    components: {
+      beforeDashboard: ['@/components/admin/DashboardStats#DashboardStats'],
     },
   },
   globals: [SiteSettings, Tracking, CompanyStats],
@@ -37,14 +41,7 @@ export default buildConfig({
     Testimonials,
     Leads,
     Pages,
-    {
-      slug: 'users',
-      auth: true,
-      admin: {
-        useAsTitle: 'email',
-      },
-      fields: [],
-    },
+    Users,
   ],
   editor: lexicalEditor({}),
   secret: process.env.PAYLOAD_SECRET || 'super-secret',

@@ -1,5 +1,6 @@
 import { getPayload } from 'payload'
 import configPromise from '@/payload.config'
+import Link from 'next/link'
 
 export default async function Blog() {
   const payload = await getPayload({ config: configPromise })
@@ -34,9 +35,9 @@ export default async function Blog() {
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold text-dark-charcoal">Latest News Posts<br />And Articles</h2>
           </div>
-          <a className="bg-primary-orange text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:-translate-y-1 hover:scale-105 hover:shadow-lg transition-all duration-300" href="#">
+          <Link className="bg-primary-orange text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:-translate-y-1 hover:scale-105 hover:shadow-lg transition-all duration-300" href="/news">
             VIEW ALL POSTS <span className="bg-black/20 rounded-full p-1 text-xs">→</span>
-          </a>
+          </Link>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -53,7 +54,7 @@ export default async function Blog() {
               }
 
               return (
-                <div key={post.id} className="bg-white rounded-[40px] overflow-hidden shadow-sm group border border-slate-100 hover:-translate-y-2 transition-transform duration-300">
+                <Link href={`/news/${post.slug}`} key={post.id} className="block bg-white rounded-[40px] overflow-hidden shadow-sm group border border-slate-100 hover:-translate-y-2 transition-transform duration-300">
                   <div className="relative h-64 overflow-hidden">
                     <img
                       alt={post.title}
@@ -70,7 +71,7 @@ export default async function Blog() {
                       <span className="">💬 0 Comments</span>
                     </div>
                   </div>
-                </div>
+                </Link>
               )
             })
           ) : (

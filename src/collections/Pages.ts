@@ -4,6 +4,9 @@ export const Pages: CollectionConfig = {
   slug: 'pages',
   admin: {
     useAsTitle: 'title',
+    group: 'Content',
+    defaultColumns: ['title', 'slug', 'updatedAt'],
+    listSearchableFields: ['title', 'slug'],
   },
   access: {
     read: () => true,

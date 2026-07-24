@@ -3,6 +3,7 @@ import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import { getPayload } from 'payload';
 import configPromise from '@/payload.config';
+import { SITE_URL } from '@/lib/site';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -15,8 +16,18 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Screw Wood - Construction Company in Bangalore",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Screw Wood - Construction Company in Bangalore",
+    template: "%s | Screw Wood",
+  },
   description: "Innovative construction and interior solutions tailored to your vision.",
+  openGraph: {
+    siteName: "Screw Wood",
+    type: "website",
+    locale: "en_IN",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default async function RootLayout({
