@@ -13,12 +13,11 @@ export default function Header() {
           <span className="text-white text-2xl font-bold tracking-tight">Screw Wood</span>
         </div>
         <ul className="hidden md:flex space-x-8 text-white font-medium">
-          <li><Link href="#" className="text-primary-orange">Home +</Link></li>
-          <li><Link href="#" className="hover:text-primary-orange">Pages +</Link></li>
-          <li><Link href="#" className="hover:text-primary-orange">Services +</Link></li>
-          <li><Link href="#" className="hover:text-primary-orange">Projects +</Link></li>
-          <li><Link href="#" className="hover:text-primary-orange">News +</Link></li>
-          <li><Link href="#" className="">Contact</Link></li>
+          <li><Link href="#" className="hover:text-primary-orange">Home</Link></li>
+          <li><Link href="#" className="hover:text-primary-orange">Services</Link></li>
+          <li><Link href="#" className="hover:text-primary-orange">Projects</Link></li>
+          <li><Link href="#" className="hover:text-primary-orange">News</Link></li>
+          <li><Link href="#" className="hover:text-primary-orange">Contact</Link></li>
         </ul>
         <div className="flex items-center space-x-2 md:space-x-4">
           <button className="hidden md:block text-white">

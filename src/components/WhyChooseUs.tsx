@@ -9,11 +9,11 @@ export default function WhyChooseUs() {
         <h2 className="text-5xl font-extrabold text-dark-charcoal">What Makes Us Different</h2>
       </div>
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div className="flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center group">
           <div className="relative mb-6">
             <img
               alt="Affordable"
-              className="rounded-full w-48 h-48 object-cover"
+              className="rounded-full w-48 h-48 object-cover transition-transform duration-700 group-hover:scale-110 group-hover:shadow-2xl"
               src="/images/bangalore_modern_interior.png"
             />
             <div className="absolute bottom-2 left-2 bg-primary-orange p-3 rounded-full flex items-center justify-center">
@@ -23,11 +23,11 @@ export default function WhyChooseUs() {
           <h4 className="text-xl font-bold mb-4">Affordable Bangalore Realty</h4>
           <p className="text-gray-500 text-sm">We prioritize communication and simplicity, making your property journey smooth in the fast-paced IT hub.</p>
         </div>
-        <div className="flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center group">
           <div className="relative mb-6">
             <img
               alt="Expertise"
-              className="rounded-full w-48 h-48 object-cover"
+              className="rounded-full w-48 h-48 object-cover transition-transform duration-700 group-hover:scale-110 group-hover:shadow-2xl"
               src="/images/bangalore_architect_planning.png"
             />
             <div className="absolute bottom-2 left-2 bg-primary-orange p-3 rounded-full flex items-center justify-center">
@@ -37,11 +37,11 @@ export default function WhyChooseUs() {
           <h4 className="text-xl font-bold mb-4">Local Expertise You Can Trust</h4>
           <p className="text-gray-500 text-sm">Our experience with BDA and BBMP approvals guides you through every step with knowledge and care.</p>
         </div>
-        <div className="flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center group">
           <div className="relative mb-6">
             <img
               alt="Process"
-              className="rounded-full w-48 h-48 object-cover"
+              className="rounded-full w-48 h-48 object-cover transition-transform duration-700 group-hover:scale-110 group-hover:shadow-2xl"
               src="/images/bangalore_house_construction.png"
             />
             <div className="absolute bottom-2 left-2 bg-primary-orange p-3 rounded-full flex items-center justify-center">
@@ -51,11 +51,11 @@ export default function WhyChooseUs() {
           <h4 className="text-xl font-bold mb-4">Hassle-Free Process</h4>
           <p className="text-gray-500 text-sm">We make your property journey smooth and stress-free through every step of construction.</p>
         </div>
-        <div className="flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center group">
           <div className="relative mb-6">
             <img
               alt="Value"
-              className="rounded-full w-48 h-48 object-cover"
+              className="rounded-full w-48 h-48 object-cover transition-transform duration-700 group-hover:scale-110 group-hover:shadow-2xl"
               src="/images/bangalore_hero_building.png"
             />
             <div className="absolute bottom-2 left-2 bg-primary-orange p-3 rounded-full flex items-center justify-center">

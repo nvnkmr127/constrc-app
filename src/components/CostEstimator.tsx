@@ -2,7 +2,7 @@ export default function CostEstimator() {
   return (
     <>
       <section className="max-w-7xl mx-auto px-4 py-24 relative z-10 font-montserrat">
-        <div className="bg-[#2b261e] rounded-[40px] p-10 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div className="bg-[#2b261e] rounded-[40px] p-10 md:p-16 shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="flex-1">
             <div className="inline-block border border-primary-orange rounded-full px-4 py-1 mb-8">
               <span className="text-primary-orange text-xs font-bold tracking-widest uppercase">Free Cost Estimator</span>
@@ -34,7 +34,7 @@ export default function CostEstimator() {
       </section>
 
       <section className="max-w-7xl mx-auto px-4 mb-24 relative z-10 font-montserrat">
-        <div className="bg-white rounded-[40px] p-8 md:p-12 shadow-xl border border-gray-100 flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className="bg-white rounded-[40px] p-8 md:p-12 shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-2 flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="flex items-center gap-6">
             <div className="w-1.5 h-16 bg-[#ff4155] rounded-full hidden md:block"></div>
             <div className="text-left">

@@ -18,11 +18,11 @@ export default function Services() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Service Card 1 */}
-          <div className="bg-white p-4 rounded-[40px] shadow-sm hover:shadow-xl transition-shadow group">
+          <div className="bg-white p-4 rounded-[40px] shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
             <div className="relative overflow-hidden rounded-[30px] mb-6">
               <img
                 alt="Building Construction"
-                className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-64 object-cover transform group-group-hover:scale-110 transition-transform duration-700"
                 src="/images/bangalore_house_construction.png"
               />
               <div className="absolute bottom-4 right-4 bg-primary-orange p-3 rounded-full text-white">
@@ -40,11 +40,11 @@ export default function Services() {
             </div>
           </div>
           {/* Service Card 2 */}
-          <div className="bg-white p-4 rounded-[40px] shadow-sm hover:shadow-xl transition-shadow group">
+          <div className="bg-white p-4 rounded-[40px] shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
             <div className="relative overflow-hidden rounded-[30px] mb-6">
               <img
                 alt="Commercial Renovate"
-                className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-64 object-cover transform group-group-hover:scale-110 transition-transform duration-700"
                 src="/images/bangalore_commercial_complex.png"
               />
               <div className="absolute bottom-4 right-4 bg-primary-orange p-3 rounded-full text-white">
@@ -62,11 +62,11 @@ export default function Services() {
             </div>
           </div>
           {/* Service Card 3 */}
-          <div className="bg-white p-4 rounded-[40px] shadow-sm hover:shadow-xl transition-shadow group">
+          <div className="bg-white p-4 rounded-[40px] shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
             <div className="relative overflow-hidden rounded-[30px] mb-6">
               <img
                 alt="Architecture Design"
-                className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-64 object-cover transform group-group-hover:scale-110 transition-transform duration-700"
                 src="/images/bangalore_architect_planning.png"
               />
               <div className="absolute bottom-4 right-4 bg-primary-orange p-3 rounded-full text-white">

@@ -8,7 +8,7 @@ export default function PackageComparison() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {/* Essential Package */}
-          <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+          <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-3">
             <div className="bg-primary-orange py-4 text-center text-white font-bold">Essential Package</div>
             <div className="bg-[#fff9e6] p-6 text-center border-b border-gray-100">
               <div className="text-3xl font-black text-dark-charcoal">₹1,875</div>
@@ -33,7 +33,7 @@ export default function PackageComparison() {
             </div>
           </div>
           {/* Premier Package */}
-          <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+          <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-3">
             <div className="bg-primary-orange py-4 text-center text-white font-bold">Premier Package</div>
             <div className="bg-[#fff9e6] p-6 text-center border-b border-gray-100">
               <div className="text-3xl font-black text-dark-charcoal">₹2,019</div>
@@ -58,7 +58,7 @@ export default function PackageComparison() {
             </div>
           </div>
           {/* Infinia Package */}
-          <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+          <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-3">
             <div className="bg-primary-orange py-4 text-center text-white font-bold">Infinia Package</div>
             <div className="bg-[#fff9e6] p-6 text-center border-b border-gray-100">
               <div className="text-3xl font-black text-dark-charcoal">₹2,289</div>
@@ -83,7 +83,7 @@ export default function PackageComparison() {
             </div>
           </div>
           {/* Pinnacle Package */}
-          <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+          <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-3">
             <div className="bg-primary-orange py-4 text-center text-white font-bold">Pinnacle Package</div>
             <div className="bg-[#fff9e6] p-6 text-center border-b border-gray-100">
               <div className="text-3xl font-black text-dark-charcoal">₹2,478</div>
