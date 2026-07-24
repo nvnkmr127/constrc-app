@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { openCallModal } from '@/components/CallModal';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -73,12 +74,13 @@ export default function Header() {
 
         {/* Action Button & Mobile Toggle */}
         <div className="flex items-center space-x-3">
-          <Link
-            href="/contact"
-            className="hidden sm:flex bg-primary-orange hover:bg-orange-600 text-white px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider items-center gap-2 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+          <button
+            type="button"
+            onClick={openCallModal}
+            className="hidden sm:flex bg-primary-orange hover:bg-orange-600 text-white px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider items-center gap-2 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
           >
             Get a Quote <span className="bg-black/20 rounded-full p-0.5 text-[10px]">→</span>
-          </Link>
+          </button>
 
           {/* Hamburger Icon */}
           <button

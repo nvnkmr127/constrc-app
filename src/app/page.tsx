@@ -11,7 +11,6 @@ import Testimonials from "@/components/Testimonials";
 import Projects from "@/components/Projects";
 import FAQ from "@/components/FAQ";
 import Blog from "@/components/Blog";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -30,11 +29,9 @@ export default function Home() {
         <Testimonials />
         <Projects />
         <FAQ />
-        <Contact />
         <Blog />
       </main>
       <Footer />
     </>
   );
 }
-
