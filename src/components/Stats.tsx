@@ -1,29 +1,21 @@
 export default function Stats() {
   return (
     <>
-      <div className="bg-white border-y border-gray-100 py-8">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-wrap justify-center md:justify-between items-center gap-8 text-sm font-bold text-slate-600 uppercase tracking-wider">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary-orange"></span>
-              Timely Delivery
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary-orange"></span>
-              Premium Material Quality
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary-orange"></span>
-              Transparent Pricing
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary-orange"></span>
-              3D Visualization Available
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary-orange"></span>
-              Bespoke Construction Designs
-            </div>
+      <div className="bg-white border-y border-gray-100 py-8 overflow-hidden flex whitespace-nowrap">
+        <div className="flex items-center space-x-12 animate-marquee text-sm font-bold text-slate-600 uppercase tracking-wider">
+          <div className="flex items-center space-x-12">
+            <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-orange"></span>Timely Delivery</div>
+            <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-orange"></span>Premium Material Quality</div>
+            <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-orange"></span>Transparent Pricing</div>
+            <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-orange"></span>3D Visualization Available</div>
+            <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-orange"></span>Bespoke Construction Designs</div>
+          </div>
+          <div className="flex items-center space-x-12">
+            <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-orange"></span>Timely Delivery</div>
+            <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-orange"></span>Premium Material Quality</div>
+            <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-orange"></span>Transparent Pricing</div>
+            <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-orange"></span>3D Visualization Available</div>
+            <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-orange"></span>Bespoke Construction Designs</div>
           </div>
         </div>
       </div>
