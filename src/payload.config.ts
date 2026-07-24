@@ -1,6 +1,7 @@
 import { buildConfig } from 'payload'
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import sharp from 'sharp'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { Leads } from './collections/Leads'
@@ -44,6 +45,7 @@ export default buildConfig({
     Users,
   ],
   editor: lexicalEditor({}),
+  sharp,
   secret: process.env.PAYLOAD_SECRET || 'super-secret',
   db: sqliteAdapter({
     client: {
