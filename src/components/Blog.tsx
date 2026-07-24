@@ -8,7 +8,7 @@ export default function Blog() {
               <div className="w-10 h-[2px] bg-primary-orange"></div>
               <span className="text-primary-orange font-bold uppercase tracking-widest text-xs">OUR BLOG &amp; NEWS</span>
             </div>
-            <h2 className="text-5xl font-extrabold text-dark-charcoal">Latest News Posts<br />And Articles</h2>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-dark-charcoal">Latest News Posts<br />And Articles</h2>
           </div>
           <a className="bg-primary-orange text-white px-8 py-4 rounded-full font-bold flex items-center gap-2" href="#">
             VIEW ALL POSTS <span className="bg-black/20 rounded-full p-1 text-xs">→</span>

@@ -4,7 +4,7 @@ export default function Testimonials() {
       <section className="py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-dark-charcoal mb-4">Turn Your Vision into Reality - In Just a Few Simple Steps</h2>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-dark-charcoal mb-4">Turn Your Vision into Reality - In Just a Few Simple Steps</h2>
             <p className="text-slate-500 font-medium">Experience expert construction tailored to your style, budget, and lifestyle - effortlessly.</p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -75,7 +75,7 @@ export default function Testimonials() {
               <div className="text-center flex-grow">
                 <p className="text-slate-500 text-sm mb-4">They transformed their house into a dream home with Screw Wood Construction</p>
                 <h5 className="text-2xl font-bold text-dark-charcoal mb-6">Kavita</h5>
-                <div className="grid grid-cols-3 gap-4 border-t border-gray-100 pt-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-gray-100 pt-6 text-center sm:text-left">
                   <div>
                     <p className="text-[10px] uppercase font-bold text-gray-400">Budget</p>
                     <p className="font-bold text-dark-charcoal">₹4.5 lacs</p>

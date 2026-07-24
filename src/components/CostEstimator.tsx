@@ -7,7 +7,7 @@ export default function CostEstimator() {
             <div className="inline-block border border-primary-orange rounded-full px-4 py-1 mb-8">
               <span className="text-primary-orange text-xs font-bold tracking-widest uppercase">Free Cost Estimator</span>
             </div>
-            <h2 className="text-white text-4xl md:text-5xl font-extrabold leading-tight mb-6">How much will your home construction cost?</h2>
+            <h2 className="text-white text-3xl md:text-5xl font-extrabold leading-tight mb-6">How much will your home construction cost?</h2>
             <p className="text-slate-300 text-lg mb-8 max-w-2xl">Get a room-wise estimate in under 3 minutes. Select your BHK, customise your scope, and see plan-wise pricing.</p>
             <div className="flex flex-wrap gap-6">
               <div className="flex items-center gap-2">

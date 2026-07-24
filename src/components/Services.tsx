@@ -8,7 +8,7 @@ export default function Services() {
               <div className="w-10 h-[2px] bg-primary-orange"></div>
               <span className="text-primary-orange font-bold uppercase tracking-widest text-xs">What We Offer</span>
             </div>
-            <h2 className="text-5xl font-extrabold text-dark-charcoal leading-tight">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-dark-charcoal leading-tight">
               Driven By Quality, Defined By Results
             </h2>
           </div>

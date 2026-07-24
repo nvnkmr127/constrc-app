@@ -7,7 +7,7 @@ export default function FAQ() {
             <div className="w-10 h-[2px] bg-primary-orange"></div>
             <span className="text-primary-orange font-bold uppercase tracking-widest text-xs">CONSTRUCTION COMPANY</span>
           </div>
-          <h2 className="text-5xl font-extrabold text-dark-charcoal mb-8">Your Construction<br />FAQ For Customers</h2>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-dark-charcoal mb-8">Your Construction<br />FAQ For Customers</h2>
           <p className="text-gray-500 mb-12 max-w-md">Real stories from homeowners and investors who trusted us to guide their real estate journey.</p>
           <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex items-center gap-6">
             <img

@@ -53,7 +53,7 @@ export default function Stats() {
             <p className="text-slate-600 mb-8 leading-relaxed">
               We embrace the latest technologies and sustainable practices to create environmentally friendly and energy-efficient buildings. Our mission is not just to construct structures, but to build communities and spaces where people thrive and prosper.
             </p>
-            <div className="grid grid-cols-2 gap-6 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
               <div className="bg-dark-charcoal p-8 rounded-3xl text-white relative">
                 <div className="mb-4">
                   <img

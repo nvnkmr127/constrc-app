@@ -8,7 +8,7 @@ export default function Projects() {
               <div className="w-10 h-[2px] bg-primary-orange"></div>
               <span className="text-primary-orange font-bold uppercase tracking-widest text-xs">Our Projects</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">We Provide Effective Solutions in Construction</h2>
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">We Provide Effective Solutions in Construction</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Project Item 1 */}
@@ -117,7 +117,7 @@ export default function Projects() {
             <div className="col-span-2 flex gap-4 overflow-x-auto pb-4">
               <img
                 alt="Small"
-                className="w-32 h-32 rounded-2xl object-cover grayscale hover:grayscale-0 cursor-pointer"
+                className="w-24 h-24 md:w-32 md:h-32 rounded-2xl object-cover grayscale hover:grayscale-0 cursor-pointer"
                 src="/images/indian_professional_man_2.png"
               />
               <img
@@ -141,7 +141,7 @@ export default function Projects() {
             <p className="text-gray-500 mb-10 leading-relaxed">
               We are driven to improve the lives of our clients, our employees, and our community through our commitment to leadership.
             </p>
-            <div className="grid grid-cols-5 gap-8 items-center opacity-40">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-40">
               <img alt="Logo" src="https://placehold.co/150x50/888?text=Client+Logo/AB6AXuAJ9jPEz_ObCivLzqb9C77PYBKlagNuXdvSNKzpzp5rVrRex_4fIiba6mmaYza5Y875BCiGefQLJPqoc98IEStHz3wdwyBfPCjVCCdKrqmQs-3BetUgVYVIEE0PmC9s0GU4vct7jj-Ut3n6enlOm1CrGSpVG1xgfkJiWO694txU_wMsOHE2UqoNoSwTGl9L6-Bq9ENUmt2ehqKEGU65rfiY1U1RbGNJOt2SyTEx2YXnTl-upMY0lgGKsPI10XZOFIri4RKpBOQV6qm2" />
               <img alt="Logo" src="https://placehold.co/150x50/888?text=Client+Logo/AB6AXuC7p4vIYxoXkyQ8A7Tlr_mIbpsTPhAD8hqZbpIcmYqFr0okrF_dbnz_wlBuqBrpw_Uhr3b6PA052LVwtzOa1oGCT_KV1CXGLNIIMqaguDbUkU8vZxlt35R2qeWJ7glyPU8zGjllsva_QryyTpzPb3QwbZYHQU4L3Q3SaE8SklifsefkbhTxY-9UCHf0TRVxeq1C7QGK3kJMh4Danf1p4XbCt0R63xAlUlpMNLr3RVGBhE42opmmrnBs0aZZucNK6OwxqEAbjQmEF3Us" />
               <img alt="Logo" src="https://placehold.co/150x50/888?text=Client+Logo/AB6AXuCK9jeCMiP05aVZqPO7eAhsgeQJQ2oMCrs-g3OXpvZM1emIr_njp1a3ho35-MpdEivB4bTY5DMFO9XVwjoGVw4A3kU9Tquk-BtN3OEToW2LbC3jHqilpsFl1FjmLFI_wzF8eYOZ8DXqn3-HB1o5IbY6Tz-EY6Bl5D76DDinMgRVbeWphLEQ55pMqwGOfHkoWSpq2vcEwBvJFeVufjgrO3wsBXTgZR71reBUoSFr5rVv56w8wfzPegJ2ed329XiOubin_u7N7TnngOTl" />

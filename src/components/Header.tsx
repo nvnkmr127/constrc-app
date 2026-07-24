@@ -20,13 +20,13 @@ export default function Header() {
           <li><Link href="#" className="hover:text-primary-orange">News +</Link></li>
           <li><Link href="#" className="">Contact</Link></li>
         </ul>
-        <div className="flex items-center space-x-4">
-          <button className="text-white">
+        <div className="flex items-center space-x-2 md:space-x-4">
+          <button className="hidden md:block text-white">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
           </button>
-          <Link href="#" className="bg-primary-orange text-white px-6 py-2 rounded-full font-bold flex items-center gap-2">
+          <Link href="#" className="hidden md:flex bg-primary-orange text-white px-6 py-2 rounded-full font-bold items-center gap-2">
             GET A QUOTE <span className="bg-black/20 rounded-full p-1 text-xs">→</span>
           </Link>
           <button className="text-white">

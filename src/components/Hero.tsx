@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="max-w-xl">
-            <h1 className="text-dark-charcoal text-5xl md:text-7xl font-extrabold leading-tight mb-8">
+            <h1 className="text-dark-charcoal text-4xl md:text-7xl font-extrabold leading-tight mb-8">
               Building <span className="text-primary-orange">Bangalore's</span> Dream Homes & Apartments
             </h1>
             <div className="space-y-6 mb-10">

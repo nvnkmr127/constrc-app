@@ -5,7 +5,7 @@ export default function Footer() {
     <>
       <section className="max-w-7xl mx-auto px-4 -mb-24 relative z-20 mt-12">
         <div className="bg-dark-charcoal rounded-[50px] p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10">
-          <h3 className="text-white text-4xl md:text-5xl font-extrabold leading-tight">
+          <h3 className="text-white text-3xl md:text-5xl font-extrabold leading-tight">
             Subscribe Newsletter<br />
             <span className="text-gray-500 text-sm font-normal">Sign up today to get the latest inspiration &amp; insights</span>
           </h3>
