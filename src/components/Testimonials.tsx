@@ -1,182 +1,191 @@
+'use client';
+
+import React from 'react';
+import { openCallModal } from '@/components/CallModal';
+
 export default function Testimonials() {
   return (
     <>
-      <section className="py-16 bg-white overflow-hidden">
+      <section className="py-16 md:py-24 bg-white overflow-hidden" id="process">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-[#FAF7F2] rounded-3xl md:rounded-[50px] md:rounded-tr-[90px] p-6 md:p-12 border border-orange-100/80 shadow-xs">
-            <div className="text-center mb-10">
-              <h2 className="text-2xl md:text-4xl font-extrabold text-dark-charcoal mb-2 tracking-tight">
-                Turn Your Vision into Reality - In Just a Few Simple Steps
+          <div className="bg-gradient-to-br from-orange-50/80 via-white to-slate-50 rounded-3xl md:rounded-[48px] p-6 md:p-12 border border-orange-100 shadow-xl">
+            <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-primary-orange/15 text-primary-orange text-xs font-black uppercase tracking-widest border border-primary-orange/30">
+                ⚡ HOW SCREW WOOD WORKS
+              </span>
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                Turn Your Vision Into Reality — In 6 Simple Steps
               </h2>
-              <p className="text-slate-500 text-xs md:text-sm font-medium">
-                Experience expert-designed construction &amp; interiors tailored to your style, budget, and lifestyle - effortlessly.
+              <p className="text-slate-600 text-sm md:text-base font-medium">
+                Experience tech-enabled home construction &amp; interiors tailored to your style, budget, and lifestyle — effortlessly.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-              {/* Left Side 6 Steps Grid */}
-              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+              {/* Left Side 6 Steps Grid (8 cols) - Touch Carousel on Mobile */}
+              <div className="lg:col-span-8 flex overflow-x-auto snap-x snap-mandatory gap-3.5 pb-4 sm:pb-0 sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible">
                 {/* Step 1 */}
-                <div className="bg-white p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-xs relative min-h-[170px] flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <div className="min-w-[240px] sm:min-w-0 snap-center bg-white p-5 sm:p-6 rounded-3xl border border-slate-200/80 shadow-sm relative flex flex-col justify-between hover:shadow-xl hover:-translate-y-1.5 transition-all group shrink-0 sm:shrink">
                   <div className="flex justify-between items-start">
-                    <div className="w-9 h-9 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-sm shadow-sm">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 bg-primary-orange text-white rounded-2xl flex items-center justify-center font-black text-sm sm:text-base shadow-md shadow-orange-500/20 group-hover:scale-110 transition-transform">
                       1
                     </div>
-                    {/* Illustration Graphic 1 */}
-                    <div className="w-14 h-12 flex items-center justify-end text-primary-orange/40">
-                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                      </svg>
-                    </div>
+                    <span className="text-2xl sm:text-3xl opacity-80 group-hover:scale-110 transition-transform">📞</span>
                   </div>
-                  <h4 className="text-base md:text-lg font-bold text-dark-charcoal mt-6 leading-snug">
-                    Book<br />Consultation
-                  </h4>
+                  <div className="mt-6 sm:mt-8 space-y-1">
+                    <h4 className="text-base sm:text-lg font-black text-slate-900 leading-snug">
+                      Book Consultation
+                    </h4>
+                    <p className="text-[11px] sm:text-xs text-slate-500 font-normal">
+                      Schedule a 1-on-1 session with Bangalore's leading architects.
+                    </p>
+                  </div>
                 </div>
 
                 {/* Step 2 */}
-                <div className="bg-white p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-xs relative min-h-[170px] flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <div className="min-w-[240px] sm:min-w-0 snap-center bg-white p-5 sm:p-6 rounded-3xl border border-slate-200/80 shadow-sm relative flex flex-col justify-between hover:shadow-xl hover:-translate-y-1.5 transition-all group shrink-0 sm:shrink">
                   <div className="flex justify-between items-start">
-                    <div className="w-9 h-9 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-sm shadow-sm">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 bg-primary-orange text-white rounded-2xl flex items-center justify-center font-black text-sm sm:text-base shadow-md shadow-orange-500/20 group-hover:scale-110 transition-transform">
                       2
                     </div>
-                    {/* Illustration Graphic 2 */}
-                    <div className="w-14 h-12 flex items-center justify-end text-primary-orange/40">
-                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                      </svg>
-                    </div>
+                    <span className="text-2xl sm:text-3xl opacity-80 group-hover:scale-110 transition-transform">📐</span>
                   </div>
-                  <h4 className="text-base md:text-lg font-bold text-dark-charcoal mt-6 leading-snug">
-                    Meet Designer
-                  </h4>
+                  <div className="mt-6 sm:mt-8 space-y-1">
+                    <h4 className="text-base sm:text-lg font-black text-slate-900 leading-snug">
+                      Meet Designer
+                    </h4>
+                    <p className="text-[11px] sm:text-xs text-slate-500 font-normal">
+                      Receive custom 3D floor plans &amp; structural concepts.
+                    </p>
+                  </div>
                 </div>
 
                 {/* Step 3 */}
-                <div className="bg-white p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-xs relative min-h-[170px] flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <div className="min-w-[240px] sm:min-w-0 snap-center bg-white p-5 sm:p-6 rounded-3xl border border-slate-200/80 shadow-sm relative flex flex-col justify-between hover:shadow-xl hover:-translate-y-1.5 transition-all group shrink-0 sm:shrink">
                   <div className="flex justify-between items-start">
-                    <div className="w-9 h-9 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-sm shadow-sm">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 bg-primary-orange text-white rounded-2xl flex items-center justify-center font-black text-sm sm:text-base shadow-md shadow-orange-500/20 group-hover:scale-110 transition-transform">
                       3
                     </div>
-                    {/* Illustration Graphic 3 */}
-                    <div className="w-14 h-12 flex items-center justify-end text-primary-orange/40">
-                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                      </svg>
-                    </div>
+                    <span className="text-2xl sm:text-3xl opacity-80 group-hover:scale-110 transition-transform">📋</span>
                   </div>
-                  <h4 className="text-base md:text-lg font-bold text-dark-charcoal mt-6 leading-snug">
-                    Share your<br />requirements
-                  </h4>
+                  <div className="mt-6 sm:mt-8 space-y-1">
+                    <h4 className="text-base sm:text-lg font-black text-slate-900 leading-snug">
+                      Transparent Quote
+                    </h4>
+                    <p className="text-[11px] sm:text-xs text-slate-500 font-normal">
+                      Lock itemized material wallets &amp; package rates.
+                    </p>
+                  </div>
                 </div>
 
                 {/* Step 4 */}
-                <div className="bg-white p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-xs relative min-h-[170px] flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <div className="min-w-[240px] sm:min-w-0 snap-center bg-white p-5 sm:p-6 rounded-3xl border border-slate-200/80 shadow-sm relative flex flex-col justify-between hover:shadow-xl hover:-translate-y-1.5 transition-all group shrink-0 sm:shrink">
                   <div className="flex justify-between items-start">
-                    <div className="w-9 h-9 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-sm shadow-sm">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 bg-primary-orange text-white rounded-2xl flex items-center justify-center font-black text-sm sm:text-base shadow-md shadow-orange-500/20 group-hover:scale-110 transition-transform">
                       4
                     </div>
-                    {/* Illustration Graphic 4 */}
-                    <div className="w-14 h-12 flex items-center justify-end text-primary-orange/40">
-                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
+                    <span className="text-2xl sm:text-3xl opacity-80 group-hover:scale-110 transition-transform">🛡️</span>
                   </div>
-                  <h4 className="text-base md:text-lg font-bold text-dark-charcoal mt-6 leading-snug">
-                    Compare &amp;<br />Finalise
-                  </h4>
+                  <div className="mt-6 sm:mt-8 space-y-1">
+                    <h4 className="text-base sm:text-lg font-black text-slate-900 leading-snug">
+                      Stage Escrow
+                    </h4>
+                    <p className="text-[11px] sm:text-xs text-slate-500 font-normal">
+                      Safe milestone payments linked to site quality approvals.
+                    </p>
+                  </div>
                 </div>
 
                 {/* Step 5 */}
-                <div className="bg-white p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-xs relative min-h-[170px] flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <div className="min-w-[240px] sm:min-w-0 snap-center bg-white p-5 sm:p-6 rounded-3xl border border-slate-200/80 shadow-sm relative flex flex-col justify-between hover:shadow-xl hover:-translate-y-1.5 transition-all group shrink-0 sm:shrink">
                   <div className="flex justify-between items-start">
-                    <div className="w-9 h-9 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-sm shadow-sm">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 bg-primary-orange text-white rounded-2xl flex items-center justify-center font-black text-sm sm:text-base shadow-md shadow-orange-500/20 group-hover:scale-110 transition-transform">
                       5
                     </div>
-                    {/* Illustration Graphic 5 */}
-                    <div className="w-14 h-12 flex items-center justify-end text-primary-orange/40">
-                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                      </svg>
-                    </div>
+                    <span className="text-2xl sm:text-3xl opacity-80 group-hover:scale-110 transition-transform">🏗️</span>
                   </div>
-                  <h4 className="text-base md:text-lg font-bold text-dark-charcoal mt-6 leading-snug">
-                    Get quality<br />checked
-                  </h4>
+                  <div className="mt-6 sm:mt-8 space-y-1">
+                    <h4 className="text-base sm:text-lg font-black text-slate-900 leading-snug">
+                      430+ QASCON Checks
+                    </h4>
+                    <p className="text-[11px] sm:text-xs text-slate-500 font-normal">
+                      Real-time app updates &amp; multi-stage site inspections.
+                    </p>
+                  </div>
                 </div>
 
                 {/* Step 6 */}
-                <div className="bg-white p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-xs relative min-h-[170px] flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <div className="min-w-[240px] sm:min-w-0 snap-center bg-white p-5 sm:p-6 rounded-3xl border border-slate-200/80 shadow-sm relative flex flex-col justify-between hover:shadow-xl hover:-translate-y-1.5 transition-all group shrink-0 sm:shrink">
                   <div className="flex justify-between items-start">
-                    <div className="w-9 h-9 bg-primary-orange text-white rounded-xl flex items-center justify-center font-bold text-sm shadow-sm">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 bg-emerald-600 text-white rounded-2xl flex items-center justify-center font-black text-sm sm:text-base shadow-md shadow-emerald-500/20 group-hover:scale-110 transition-transform">
                       6
                     </div>
-                    {/* Illustration Graphic 6 */}
-                    <div className="w-14 h-12 flex items-center justify-end text-primary-orange/40">
-                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                      </svg>
-                    </div>
+                    <span className="text-2xl sm:text-3xl opacity-80 group-hover:scale-110 transition-transform">🗝️</span>
                   </div>
-                  <h4 className="text-base md:text-lg font-bold text-dark-charcoal mt-6 leading-snug">
-                    Move-In Made<br />Beautiful
-                  </h4>
+                  <div className="mt-6 sm:mt-8 space-y-1">
+                    <h4 className="text-base sm:text-lg font-black text-slate-900 leading-snug">
+                      Move-In &amp; Warranty
+                    </h4>
+                    <p className="text-[11px] sm:text-xs text-slate-500 font-normal">
+                      Snag-free handover backed by 10-year structural warranty.
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Right Side Video Testimonial Card */}
-              <div className="bg-white p-5 md:p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-lg flex flex-col justify-between">
-                <div className="relative rounded-2xl overflow-hidden mb-4 h-52 group">
+              {/* Right Side Video Testimonial Card (4 cols) */}
+              <div className="lg:col-span-4 bg-white p-6 rounded-3xl border border-slate-200/80 shadow-xl flex flex-col justify-between">
+                <div className="relative rounded-2xl overflow-hidden mb-4 h-60 group">
                   <img
                     alt="Kavita's Interior Transformation"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     src="/images/indian_professional_woman_1.png"
                   />
                   {/* Top Branding Badges */}
-                  <div className="absolute top-3 left-3 bg-white/95 px-2.5 py-1 rounded-full text-[10px] font-extrabold text-primary-orange shadow-sm flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary-orange"></span>
-                    Screw Wood
-                  </div>
-                  <div className="absolute top-3 right-3 bg-white/95 px-2.5 py-1 rounded-full text-[10px] font-extrabold text-dark-charcoal shadow-sm">
-                    Verified
+                  <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-black text-primary-orange shadow-md flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-primary-orange animate-pulse"></span>
+                    Screw Wood Client Story
                   </div>
 
                   {/* Center Play Button Overlay */}
-                  <div className="absolute inset-0 bg-black/25 flex items-center justify-center group-hover:bg-black/35 transition-colors">
-                    <div className="w-14 h-14 bg-primary-orange text-white rounded-full flex items-center justify-center shadow-xl cursor-pointer hover:scale-110 transition-transform">
-                      <svg className="w-7 h-7 fill-current ml-0.5" viewBox="0 0 24 24">
+                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors">
+                    <button
+                      type="button"
+                      onClick={openCallModal}
+                      className="w-14 h-14 bg-primary-orange text-white rounded-full flex items-center justify-center shadow-2xl cursor-pointer hover:scale-110 transition-transform"
+                    >
+                      <svg className="w-7 h-7 fill-current ml-1" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z" />
                       </svg>
-                    </div>
+                    </button>
                   </div>
 
                   {/* Bottom Image Overlay Text */}
                   <div className="absolute bottom-3 left-4 right-4">
-                    <span className="text-2xl font-black text-white tracking-tight drop-shadow-lg">
-                      Screw Wood Homes
+                    <span className="text-xl font-black text-white tracking-tight drop-shadow-md">
+                      "Delivered on time with zero stress!"
                     </span>
                   </div>
                 </div>
 
-                <div className="text-center flex-grow flex flex-col justify-between">
-                  <p className="text-slate-500 text-xs font-medium px-2 mb-3 leading-relaxed">
-                    They transformed their house into a dream home with Screw Wood Construction
+                <div className="text-center space-y-4">
+                  <p className="text-slate-600 text-xs font-medium px-2 leading-relaxed italic">
+                    "They transformed our plot into a dream 3BHK villa with complete escrow safety and top-quality materials!"
                   </p>
-                  <h5 className="text-xl font-extrabold text-dark-charcoal mb-4">Kavita</h5>
+                  <h5 className="text-lg font-black text-slate-900">Kavita &amp; Family</h5>
 
                   <div className="grid grid-cols-3 border-t border-slate-100 pt-4 text-center">
                     <div>
-                      <p className="text-[10px] font-semibold uppercase text-slate-400 tracking-wider">Budget</p>
-                      <p className="font-extrabold text-sm text-dark-charcoal mt-0.5">₹4.5 lacs</p>
+                      <p className="text-[10px] font-bold uppercase text-slate-400">Budget</p>
+                      <p className="font-extrabold text-xs text-slate-900 mt-0.5">₹45 Lacs</p>
                     </div>
                     <div>
-                      <p className="text-[10px] font-semibold uppercase text-slate-400 tracking-wider">Home</p>
-                      <p className="font-extrabold text-sm text-dark-charcoal mt-0.5">3BHK</p>
+                      <p className="text-[10px] font-bold uppercase text-slate-400">Home</p>
+                      <p className="font-extrabold text-xs text-slate-900 mt-0.5">3BHK Duplex</p>
                     </div>
                     <div>
-                      <p className="text-[10px] font-semibold uppercase text-slate-400 tracking-wider">City</p>
-                      <p className="font-extrabold text-sm text-dark-charcoal mt-0.5">Bangalore</p>
+                      <p className="text-[10px] font-bold uppercase text-slate-400">Location</p>
+                      <p className="font-extrabold text-xs text-slate-900 mt-0.5">Bangalore</p>
                     </div>
                   </div>
                 </div>
@@ -198,7 +207,7 @@ export default function Testimonials() {
         <div className="relative w-full overflow-hidden mb-16">
           <div className="flex animate-marquee-slow hover:[animation-play-state:paused] space-x-6 w-max px-4">
             {/* Card 1 */}
-            <div className="w-[450px] bg-white rounded-3xl p-8 border border-slate-100 shadow-sm flex flex-col">
+            <div className="w-[300px] sm:w-[450px] bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-sm flex flex-col shrink-0">
               <div className="flex justify-between items-start mb-6">
                 <div className="flex text-yellow-400 text-lg">★★★★★</div>
                 <img

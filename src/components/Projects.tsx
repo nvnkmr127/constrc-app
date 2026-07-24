@@ -10,74 +10,78 @@ export default function Projects() {
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">We Provide Effective Solutions in Construction</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {/* Swipeable Carousel on Mobile / 2-Col Grid on Desktop */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 md:pb-0 md:grid md:grid-cols-2 md:overflow-visible">
             {/* Project Item 1 */}
-            <div className="bg-white p-6 rounded-[40px] shadow-sm flex flex-col group border border-slate-50">
-              <div className="relative rounded-[35px] overflow-hidden mb-6 h-[400px]">
+            <div className="min-w-[280px] sm:min-w-[340px] md:min-w-0 snap-center bg-white p-5 md:p-6 rounded-[36px] shadow-sm flex flex-col group border border-slate-100 shrink-0 md:shrink">
+              <div className="relative rounded-[30px] overflow-hidden mb-4 h-[300px] sm:h-[360px]">
                 <img
                   alt="Project"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                   src="/images/bangalore_commercial_complex.png"
                 />
-                <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-                  <div className="bg-white/80 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2">
-                    <span className="text-xs font-bold text-dark-charcoal flex items-center gap-1">📍 Whitefield, Bangalore</span>
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                  <div className="bg-white/80 backdrop-blur-md px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
+                    <span className="text-[11px] font-bold text-dark-charcoal">📍 Whitefield, Bangalore</span>
                   </div>
                   <div className="bg-primary-orange p-2 rounded-full text-white text-xs">→</div>
                 </div>
               </div>
-              <h3 className="text-2xl font-bold ml-2">Work With Energetic Team</h3>
+              <h3 className="text-xl font-bold ml-1 text-slate-900">Luxury Duplex Residence</h3>
             </div>
+
             {/* Project Item 2 */}
-            <div className="bg-white p-6 rounded-[40px] shadow-sm flex flex-col group border border-slate-50">
-              <div className="relative rounded-[35px] overflow-hidden mb-6 h-[400px]">
+            <div className="min-w-[280px] sm:min-w-[340px] md:min-w-0 snap-center bg-white p-5 md:p-6 rounded-[36px] shadow-sm flex flex-col group border border-slate-100 shrink-0 md:shrink">
+              <div className="relative rounded-[30px] overflow-hidden mb-4 h-[300px] sm:h-[360px]">
                 <img
                   alt="Project"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                   src="/images/bangalore_hero_building.png"
                 />
-                <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-                  <div className="bg-white/80 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2">
-                    <span className="text-xs font-bold text-dark-charcoal flex items-center gap-1">📍 Whitefield, Bangalore</span>
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                  <div className="bg-white/80 backdrop-blur-md px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
+                    <span className="text-[11px] font-bold text-dark-charcoal">📍 HBR Layout, Bangalore</span>
                   </div>
                   <div className="bg-primary-orange p-2 rounded-full text-white text-xs">→</div>
                 </div>
               </div>
-              <h3 className="text-2xl font-bold ml-2">Mixed-Use Development</h3>
+              <h3 className="text-xl font-bold ml-1 text-slate-900">Modern G+3 Residential Complex</h3>
             </div>
+
             {/* Project Item 3 */}
-            <div className="bg-white p-6 rounded-[40px] shadow-sm flex flex-col group border border-slate-50">
-              <div className="relative rounded-[35px] overflow-hidden mb-6 h-[400px]">
+            <div className="min-w-[280px] sm:min-w-[340px] md:min-w-0 snap-center bg-white p-5 md:p-6 rounded-[36px] shadow-sm flex flex-col group border border-slate-100 shrink-0 md:shrink">
+              <div className="relative rounded-[30px] overflow-hidden mb-4 h-[300px] sm:h-[360px]">
                 <img
                   alt="Project"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                   src="/images/bangalore_modern_interior.png"
                 />
-                <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-                  <div className="bg-white/80 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2">
-                    <span className="text-xs font-bold text-dark-charcoal flex items-center gap-1">📍 Indiranagar, Bangalore</span>
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                  <div className="bg-white/80 backdrop-blur-md px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
+                    <span className="text-[11px] font-bold text-dark-charcoal">📍 Indiranagar, Bangalore</span>
                   </div>
                   <div className="bg-primary-orange p-2 rounded-full text-white text-xs">→</div>
                 </div>
               </div>
-              <h3 className="text-2xl font-bold ml-2">Premier Office Tower</h3>
+              <h3 className="text-xl font-bold ml-1 text-slate-900">Premier Villa Interior Design</h3>
             </div>
+
             {/* Project Item 4 */}
-            <div className="bg-white p-6 rounded-[40px] shadow-sm flex flex-col group border border-slate-50">
-              <div className="relative rounded-[35px] overflow-hidden mb-6 h-[400px]">
+            <div className="min-w-[280px] sm:min-w-[340px] md:min-w-0 snap-center bg-white p-5 md:p-6 rounded-[36px] shadow-sm flex flex-col group border border-slate-100 shrink-0 md:shrink">
+              <div className="relative rounded-[30px] overflow-hidden mb-4 h-[300px] sm:h-[360px]">
                 <img
                   alt="Project"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                   src="/images/bangalore_house_construction.png"
                 />
-                <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-                  <div className="bg-white/80 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2">
-                    <span className="text-xs font-bold text-dark-charcoal flex items-center gap-1">📍 Whitefield, Bangalore</span>
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                  <div className="bg-white/80 backdrop-blur-md px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
+                    <span className="text-[11px] font-bold text-dark-charcoal">📍 Sarjapur Road, Bangalore</span>
                   </div>
                   <div className="bg-primary-orange p-2 rounded-full text-white text-xs">→</div>
                 </div>
               </div>
-              <h3 className="text-2xl font-bold ml-2">Greenview Apartments</h3>
+              <h3 className="text-xl font-bold ml-1 text-slate-900">Greenview Premium Villa</h3>
             </div>
           </div>
         </div>

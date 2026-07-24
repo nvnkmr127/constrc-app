@@ -4,96 +4,121 @@ import LocationAutocomplete from '@/components/LocationAutocomplete';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[800px] flex items-center overflow-hidden pt-32 pb-24">
+    <section className="relative min-h-[760px] md:min-h-[820px] flex items-center overflow-hidden pt-24 md:pt-36 pb-14 md:pb-20 bg-slate-950 font-sans">
+      {/* Background Image with Dark Vignette Gradient */}
       <div className="absolute inset-0 z-0">
         <img
-          alt="Modern Interior"
-          className="w-full h-full object-cover"
+          alt="Bangalore Architecture"
+          className="w-full h-full object-cover scale-105 filter brightness-75"
           src="/images/bangalore_hero_building.png"
         />
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-950/40" />
       </div>
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="max-w-xl">
-            <h1 className="text-dark-charcoal text-4xl md:text-7xl font-extrabold leading-tight mb-8">
-              Building <span className="text-primary-orange">Bangalore's</span> Dream Homes &amp; Apartments
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left Column Text & Value Props (7 cols) */}
+          <div className="lg:col-span-7 space-y-6 md:space-y-8 text-left">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-primary-orange/20 border border-primary-orange/40 text-primary-orange text-[10px] sm:text-xs font-black uppercase tracking-widest backdrop-blur-md">
+              ⚡ Bangalore's #1 Tech-Enabled Home Builder
+            </div>
+
+            <h1 className="text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight">
+              Building <span className="text-primary-orange">Bangalore's</span> Dream Homes &amp; Villas
             </h1>
-            <div className="space-y-6 mb-10">
-              <div className="flex items-start gap-4">
-                <div className="bg-primary-orange/10 p-2 rounded-full text-primary-orange">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                  </svg>
-                </div>
-                <p className="text-lg font-medium text-dark-charcoal">1:1 Consultation with <span className="text-primary-orange">Bangalore's Top Architects</span></p>
+
+            <p className="text-slate-300 text-sm sm:text-lg md:text-xl font-medium max-w-2xl leading-relaxed">
+              Transparent package rates from <strong className="text-white">₹1,849/sq.ft</strong> with zero hidden costs, stage-wise escrow safety &amp; 430+ QASCON quality checks.
+            </p>
+
+            {/* Key Value Props Grid (3-Col Grid on Mobile too for compact height) */}
+            <div className="grid grid-cols-3 gap-2.5 sm:gap-4 pt-1">
+              <div className="bg-white/10 backdrop-blur-md border border-white/15 p-2.5 sm:p-4 rounded-2xl text-center sm:text-left space-y-0.5 sm:space-y-1">
+                <span className="text-xl sm:text-2xl block">🛡️</span>
+                <h4 className="text-white font-extrabold text-[10px] sm:text-xs leading-tight">Stage Escrow</h4>
+                <p className="text-slate-300 text-[9px] sm:text-[11px] hidden sm:block">Pay after quality checks.</p>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="bg-primary-orange/10 p-2 rounded-full text-primary-orange">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                  </svg>
-                </div>
-                <p className="text-lg font-medium text-dark-charcoal">Meet <span className="text-primary-orange">Verified Contractors</span> for BDA/BBMP limits</p>
+
+              <div className="bg-white/10 backdrop-blur-md border border-white/15 p-2.5 sm:p-4 rounded-2xl text-center sm:text-left space-y-0.5 sm:space-y-1">
+                <span className="text-xl sm:text-2xl block">📐</span>
+                <h4 className="text-white font-extrabold text-[10px] sm:text-xs leading-tight">1:1 3D Plans</h4>
+                <p className="text-slate-300 text-[9px] sm:text-[11px] hidden sm:block">Architect floor plans.</p>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="bg-primary-orange/10 p-2 rounded-full text-primary-orange">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                  </svg>
-                </div>
-                <p className="text-lg font-medium text-dark-charcoal">Compare <span className="text-primary-orange">quotes &amp; materials</span> for local climate needs</p>
+
+              <div className="bg-white/10 backdrop-blur-md border border-white/15 p-2.5 sm:p-4 rounded-2xl text-center sm:text-left space-y-0.5 sm:space-y-1">
+                <span className="text-xl sm:text-2xl block">🏆</span>
+                <h4 className="text-white font-extrabold text-[10px] sm:text-xs leading-tight">10-Yr Warranty</h4>
+                <p className="text-slate-300 text-[9px] sm:text-[11px] hidden sm:block">Structural warranty.</p>
               </div>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm border border-primary-orange/20 px-6 py-3 rounded-xl w-fit flex items-center gap-2 shadow-sm">
-              <span className="text-primary-orange font-bold">✓</span>
-              <span className="text-dark-charcoal font-bold">+1,500 Bangalore Homes Delivered</span>
+
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-4 pt-1">
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-full flex items-center gap-1.5 shadow-sm text-[10px] sm:text-xs font-bold text-white">
+                <span className="text-emerald-400">✓</span> +1,500 Homes Delivered in Bengaluru
+              </div>
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-full flex items-center gap-1.5 shadow-sm text-[10px] sm:text-xs font-bold text-white">
+                <span className="text-amber-400">★</span> 4.9/5 Google Rating
+              </div>
             </div>
           </div>
-          <div className="flex justify-center lg:justify-end">
-            <div className="bg-white/95 backdrop-blur-md p-8 rounded-3xl shadow-2xl w-full max-w-md border border-slate-100">
-              <h3 className="text-2xl font-extrabold text-slate-900 mb-1 text-center tracking-tight">
-                Start Your Construction Journey
-              </h3>
-              <p className="text-slate-500 text-xs font-medium text-center mb-6">
-                Get a free quote &amp; consultation from Bangalore experts
-              </p>
 
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+          {/* Right Column Consultation Lead Form (5 cols) */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="bg-white rounded-[28px] sm:rounded-[32px] p-5 sm:p-8 shadow-2xl w-full max-w-md border border-slate-200 text-slate-900 relative">
+              <div className="text-center space-y-1 mb-4 sm:mb-6">
+                <span className="inline-block px-3 py-0.5 sm:py-1 rounded-full bg-orange-100 text-primary-orange text-[9px] sm:text-[10px] font-black uppercase tracking-widest">
+                  Free 1-on-1 Consultation
+                </span>
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                  Book Architect Session
+                </h3>
+                <p className="text-slate-500 text-[11px] sm:text-xs font-medium">
+                  Get a custom 3D layout &amp; itemized cost estimate
+                </p>
+              </div>
+
+              <form className="space-y-3.5" onSubmit={(e) => e.preventDefault()}>
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 ml-1">
-                    Full Name*
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Your Name*
                   </label>
                   <input
-                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3.5 text-slate-900 text-sm font-medium placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-orange/40 focus:border-primary-orange transition-all"
-                    placeholder="Enter your full name"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl sm:rounded-2xl px-3.5 py-2.5 sm:py-3 text-slate-900 text-xs sm:text-sm font-medium placeholder:text-slate-400 focus:outline-none focus:border-primary-orange transition-all"
+                    placeholder="Enter full name"
                     type="text"
                     required
                   />
                 </div>
+
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 ml-1">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                     Mobile Number*
                   </label>
                   <input
-                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3.5 text-slate-900 text-sm font-medium placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-orange/40 focus:border-primary-orange transition-all"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl sm:rounded-2xl px-3.5 py-2.5 sm:py-3 text-slate-900 text-xs sm:text-sm font-medium placeholder:text-slate-400 focus:outline-none focus:border-primary-orange transition-all"
                     placeholder="Enter 10-digit mobile number"
                     type="tel"
                     required
                   />
                 </div>
+
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 ml-1">
-                    Property Location*
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Plot Location in Bengaluru*
                   </label>
                   <LocationAutocomplete />
                 </div>
+
                 <button
-                  className="w-full bg-primary-orange hover:bg-orange-600 text-white font-extrabold text-base uppercase tracking-wider py-4 rounded-2xl shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center justify-center gap-2 mt-4"
+                  className="w-full bg-primary-orange hover:bg-orange-600 text-white font-black text-xs sm:text-sm uppercase tracking-wider py-3.5 sm:py-4 rounded-xl sm:rounded-2xl shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer mt-2"
                   type="submit"
                 >
-                  Talk to an Expert <span className="text-lg">→</span>
+                  TALK TO AN ARCHITECT NOW 📞
                 </button>
+
+                <p className="text-[9px] sm:text-[10px] text-slate-400 text-center font-medium">
+                  🔒 Zero Spam • Instant Callback from Local Experts
+                </p>
               </form>
             </div>
           </div>

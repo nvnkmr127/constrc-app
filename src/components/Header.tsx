@@ -71,13 +71,15 @@ export default function Header() {
         </ul>
 
         {/* Action Button & Mobile Toggle */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-3">
           <button
             type="button"
             onClick={openCallModal}
-            className="hidden sm:flex bg-primary-orange hover:bg-orange-600 text-white px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider items-center gap-2 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
+            className="flex bg-primary-orange hover:bg-orange-600 text-white px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-full font-extrabold text-[11px] sm:text-xs uppercase tracking-wider items-center gap-1.5 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer shrink-0"
           >
-            Get a Quote <span className="bg-black/20 rounded-full p-0.5 text-[10px]">→</span>
+            <span className="hidden sm:inline">Get a Quote</span>
+            <span className="sm:hidden">Quote 📞</span>
+            <span className="bg-black/20 rounded-full p-0.5 text-[10px] hidden sm:inline-block">→</span>
           </button>
 
           {/* Hamburger Icon */}

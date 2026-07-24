@@ -1,6 +1,6 @@
 export default function MaintenanceComparison() {
   return (
-    <section className="py-24 bg-white overflow-hidden font-montserrat">
+    <section className="py-24 bg-white overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-extrabold text-primary-orange mb-2">The 10-Year Gap</h2>
