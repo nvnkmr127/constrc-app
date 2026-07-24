@@ -44,14 +44,11 @@ export default function Header() {
       >
         {/* Brand Logo */}
         <Link href="/" className="flex items-center space-x-3 group">
-          <div className="w-10 h-10 rounded-full bg-primary-orange flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V11m0 0V7m0 4h4m-4 0H7" />
-            </svg>
-          </div>
-          <span className="text-white text-xl font-extrabold tracking-tight">
-            Screw <span className="text-primary-orange">Wood</span>
-          </span>
+          <img
+            src="/images/logo.png"
+            alt="Screw Wood Logo"
+            className="h-12 w-auto object-contain brightness-110 drop-shadow-md group-hover:scale-105 transition-transform"
+          />
         </Link>
 
         {/* Desktop Nav Links */}

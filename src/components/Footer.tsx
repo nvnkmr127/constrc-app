@@ -76,10 +76,11 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="col-span-1">
               <div className="flex items-center space-x-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-primary-orange text-white font-black text-xl flex items-center justify-center shadow-lg">
-                  S
-                </div>
-                <span className="text-white text-2xl font-extrabold tracking-tight">Screw Wood</span>
+                <img
+                  src="/images/logo.png"
+                  alt="Screw Wood Logo"
+                  className="h-16 w-auto object-contain drop-shadow-md"
+                />
               </div>
               <p className="mb-6 text-gray-400 leading-relaxed text-sm font-normal">
                 Bangalore's premier tech-enabled home construction company delivering quality homes with 430+ QASCON checks, escrow payment safety, and 10-year warranty.
