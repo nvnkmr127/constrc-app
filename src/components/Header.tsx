@@ -36,7 +36,7 @@ export default function Header() {
       <nav
         className={`max-w-7xl mx-auto flex justify-between items-center rounded-full px-6 md:px-8 py-3.5 transition-all duration-300 ${
           isScrolled
-            ? 'bg-slate-900/95 backdrop-blur-md border border-slate-700/60 shadow-xl'
+            ? 'bg-[#111111]/95 backdrop-blur-md border border-white/10 shadow-2xl'
             : 'bg-white/10 backdrop-blur-md border border-white/20'
         }`}
       >
@@ -99,7 +99,7 @@ export default function Header() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden max-w-7xl mx-auto mt-2 bg-black/80 backdrop-blur-md border border-white/20 rounded-3xl p-6 shadow-2xl space-y-4">
+        <div className="md:hidden max-w-7xl mx-auto mt-2 bg-[#111111]/95 backdrop-blur-md border border-white/10 rounded-3xl p-6 shadow-2xl space-y-4">
           <ul className="space-y-3 text-slate-200 font-semibold text-base">
             {navItems.map((item) => (
               <li key={item.name}>
