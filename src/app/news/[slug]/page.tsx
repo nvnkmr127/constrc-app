@@ -1,8 +1,5 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { getPayload } from 'payload'
-import configPromise from '@/payload.config'
-import { RichText } from '@payloadcms/richtext-lexical/react'
 import Header from '@/components/Header'
 import PageHero from '@/components/PageHero'
 import Footer from '@/components/Footer'
@@ -11,52 +8,50 @@ import { blogPostingSchema, breadcrumbSchema } from '@/lib/schema'
 
 type Props = { params: Promise<{ slug: string }> }
 
-async function getPost(slug: string) {
-  const payload = await getPayload({ config: configPromise })
-  const { docs } = await payload.find({
-    collection: 'posts',
-    where: { slug: { equals: slug } },
-    depth: 1,
-    limit: 1,
-  })
-  return docs[0] ?? null
+const posts: Record<string, { title: string; dateStr: string; image: string; content: string }> = {
+  'sustainable-building-materials-bangalore': {
+    title: 'Top Sustainable Building Materials for Homes in Bangalore',
+    dateStr: '15 October 2024',
+    image: '/images/bangalore_modern_interior.png',
+    content: 'Building a sustainable home in Bangalore involves choosing materials that reduce thermal heat gain, lower power consumption, and provide longevity. High-performance AAC blocks, solar-reflective roof coatings, and low-VOC paints are standard choices for eco-conscious homeowners.',
+  },
+  'bbmp-building-approval-guide-2025': {
+    title: 'Complete Guide to BBMP Plan Approvals & Regulations',
+    dateStr: '28 November 2024',
+    image: '/images/bangalore_commercial_complex.png',
+    content: 'BBMP building plan sanctions require strict adherence to setback rules, FAR ratios, and rainwater harvesting compliance. Working with certified structural engineers ensures seamless sanctioning without costly delays.',
+  },
+  'cost-effective-interior-design-tips': {
+    title: 'Cost-Effective Commercial & Residential Interior Design Tips',
+    dateStr: '10 January 2025',
+    image: '/images/bangalore_hero_building.png',
+    content: 'Optimizing interior aesthetics does not require lavish spending. Modular cabinetry, strategic accent lighting, and durable laminate finishes create high-end visual appeal at fraction of the cost.',
+  },
 }
 
 export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const { docs } = await payload.find({ collection: 'posts', limit: 1000, depth: 0 })
-  return docs.map((d: any) => ({ slug: d.slug }))
+  return Object.keys(posts).map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const post = await getPost(slug)
+  const post = posts[slug]
   if (!post) return {}
   return {
     title: post.title,
-    alternates: { canonical: `/news/${post.slug}` },
+    alternates: { canonical: `/news/${slug}` },
     openGraph: {
       type: 'article',
       title: post.title,
-      publishedTime: post.publishedDate || undefined,
-      images: post.featuredImage?.url ? [post.featuredImage.url] : undefined,
+      images: [post.image],
     },
   }
 }
 
 export default async function PostPage({ params }: Props) {
   const { slug } = await params
-  const post = await getPost(slug)
+  const post = posts[slug]
   if (!post) notFound()
-
-  const hero = post.featuredImage?.url || undefined
-  const dateStr = post.publishedDate
-    ? new Date(post.publishedDate).toLocaleDateString('en-GB', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-      })
-    : null
 
   return (
     <>
@@ -66,25 +61,21 @@ export default async function PostPage({ params }: Props) {
           breadcrumbSchema([
             { name: 'Home', path: '/' },
             { name: 'News', path: '/news' },
-            { name: post.title, path: `/news/${post.slug}` },
+            { name: post.title, path: `/news/${slug}` },
           ]),
         ]}
       />
       <Header />
       <main>
-        <PageHero title={post.title} image={hero} />
+        <PageHero title={post.title} image={post.image} />
         <article className="py-20">
           <div className="max-w-3xl mx-auto px-4">
-            {dateStr && (
-              <p className="text-primary-orange font-bold uppercase tracking-widest text-xs mb-8">
-                {dateStr}
-              </p>
-            )}
-            {post.content && (
-              <div className="prose max-w-none">
-                <RichText data={post.content} />
-              </div>
-            )}
+            <p className="text-primary-orange font-bold uppercase tracking-widest text-xs mb-8">
+              {post.dateStr}
+            </p>
+            <div className="prose max-w-none text-slate-700 leading-relaxed text-lg">
+              <p>{post.content}</p>
+            </div>
           </div>
         </article>
       </main>

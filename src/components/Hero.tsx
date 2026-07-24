@@ -1,3 +1,7 @@
+'use client';
+
+import LocationAutocomplete from '@/components/LocationAutocomplete';
+
 export default function Hero() {
   return (
     <section className="relative min-h-[800px] flex items-center overflow-hidden pt-32 pb-24">
@@ -13,7 +17,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="max-w-xl">
             <h1 className="text-dark-charcoal text-4xl md:text-7xl font-extrabold leading-tight mb-8">
-              Building <span className="text-primary-orange">Bangalore's</span> Dream Homes & Apartments
+              Building <span className="text-primary-orange">Bangalore's</span> Dream Homes &amp; Apartments
             </h1>
             <div className="space-y-6 mb-10">
               <div className="flex items-start gap-4">
@@ -49,7 +53,7 @@ export default function Hero() {
           <div className="flex justify-center lg:justify-end">
             <div className="bg-white p-8 rounded-[40px] shadow-2xl w-full max-w-md border border-gray-100">
               <h3 className="text-2xl font-bold text-dark-charcoal mb-6 text-center">Start Your Construction Journey</h3>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                 <div>
                   <label className="block text-xs font-bold text-gray-400 uppercase mb-1 ml-1">Full Name*</label>
                   <input className="w-full bg-gray-50 border-gray-200 rounded-2xl p-4 focus:ring-primary-orange focus:border-primary-orange" placeholder="Enter your name" type="text" />
@@ -59,13 +63,8 @@ export default function Hero() {
                   <input className="w-full bg-gray-50 border-gray-200 rounded-2xl p-4 focus:ring-primary-orange focus:border-primary-orange" placeholder="Enter mobile number" type="tel" />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-gray-400 uppercase mb-1 ml-1">Select your property's city*</label>
-                  <select className="w-full bg-gray-50 border-gray-200 rounded-2xl p-4 focus:ring-primary-orange focus:border-primary-orange" defaultValue="Bangalore">
-                    <option value="Bangalore">Bangalore</option>
-                    <option value="Hyderabad">Hyderabad</option>
-                    <option value="Mumbai">Mumbai</option>
-                    <option value="Delhi">Delhi</option>
-                  </select>
+                  <label className="block text-xs font-bold text-gray-400 uppercase mb-1 ml-1">Property Location*</label>
+                  <LocationAutocomplete />
                 </div>
                 <button className="w-full bg-primary-orange text-white py-5 rounded-full font-bold text-lg shadow-lg hover:bg-orange-600 transition-colors mt-4" type="submit">
                   Talk to an Expert

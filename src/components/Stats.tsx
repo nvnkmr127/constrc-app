@@ -1,18 +1,6 @@
-import { getPayload } from 'payload'
-import configPromise from '@/payload.config'
-
-export default async function Stats() {
-  const payload = await getPayload({ config: configPromise })
-  
-  let stats: any = null
-  try {
-    stats = await payload.findGlobal({ slug: 'company-stats' })
-  } catch (error) {
-    console.error("Error fetching company stats", error)
-  }
-
-  const projectsCompleted = stats?.projectsCompleted ?? "240"
-  const yearsOfExperience = stats?.yearsOfExperience ?? "15"
+export default function Stats() {
+  const projectsCompleted = "240"
+  const yearsOfExperience = "15"
 
   return (
     <>
