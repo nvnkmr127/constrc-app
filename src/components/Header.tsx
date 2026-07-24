@@ -25,6 +25,7 @@ export default function Header() {
 
   const navItems = [
     { name: 'Home', href: '/' },
+    { name: 'AI Calculator', href: '/ai-house-construction-calculator' },
     { name: 'How It Works', href: '/how-it-works' },
     { name: 'Services', href: '/services' },
     { name: 'Projects', href: '/projects' },

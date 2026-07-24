@@ -42,7 +42,7 @@ export default function Footer() {
 
             <div className="space-y-3">
               <Link
-                href="/how-it-works"
+                href="/ai-house-construction-calculator"
                 className="w-full bg-primary-orange hover:bg-orange-600 text-white font-black text-xs md:text-sm uppercase tracking-wider py-4 px-6 rounded-2xl shadow-lg hover:shadow-orange-500/20 transition-all flex items-center justify-center gap-2"
               >
                 LAUNCH COST ESTIMATOR{' '}
@@ -108,8 +108,13 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/how-it-works" className="text-primary-orange font-bold hover:underline transition-colors">
-                    How It Works &amp; Estimator
+                  <Link href="/ai-house-construction-calculator" className="text-primary-orange font-bold hover:underline transition-colors">
+                    AI Construction Calculator
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/how-it-works" className="hover:text-primary-orange transition-colors">
+                    How It Works
                   </Link>
                 </li>
                 <li>

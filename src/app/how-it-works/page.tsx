@@ -110,7 +110,7 @@ export default function HowItWorksPage() {
   // Interactive Calculator State
   const [plotArea, setPlotArea] = useState<number>(1200);
   const [floors, setFloors] = useState<number>(2);
-  const [packageTier, setPackageTier] = useState<number>(1790); // price per sqft
+  const [packageTier, setPackageTier] = useState<number>(2049); // price per sqft
 
   const totalBuiltupArea = plotArea * floors;
   const estimatedCost = totalBuiltupArea * packageTier;
@@ -493,14 +493,15 @@ export default function HowItWorksPage() {
                   </label>
                   <div className="flex flex-wrap gap-2">
                     {[
-                      { rate: 1790, label: 'Classic @ ₹1,790/sq.ft' },
-                      { rate: 2190, label: 'Premium @ ₹2,190/sq.ft' },
-                      { rate: 2690, label: 'Luxury @ ₹2,690/sq.ft' },
+                      { rate: 1849, label: 'Essential @ ₹1,849/sq.ft' },
+                      { rate: 2049, label: 'Prime @ ₹2,049/sq.ft' },
+                      { rate: 2349, label: 'Signature @ ₹2,349/sq.ft' },
+                      { rate: 2699, label: 'Elite @ ₹2,699/sq.ft' },
                     ].map((pkg) => (
                       <button
                         key={pkg.rate}
                         onClick={() => setPackageTier(pkg.rate)}
-                        className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                        className={`px-3 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
                           packageTier === pkg.rate
                             ? 'bg-primary-orange text-white shadow-md'
                             : 'bg-slate-100 text-slate-700 hover:bg-slate-200'

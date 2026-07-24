@@ -4,7 +4,6 @@ import Stats from "@/components/Stats";
 import Brands from "@/components/Brands";
 import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import CostEstimator from "@/components/CostEstimator";
 import PackageComparison from "@/components/PackageComparison";
 import MaintenanceComparison from "@/components/MaintenanceComparison";
 import Testimonials from "@/components/Testimonials";
@@ -23,7 +22,6 @@ export default function Home() {
         <Brands />
         <Services />
         <WhyChooseUs />
-        <CostEstimator />
         <PackageComparison />
         <MaintenanceComparison />
         <Testimonials />
