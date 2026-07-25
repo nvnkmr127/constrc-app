@@ -8,10 +8,11 @@ import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: 'AI House Construction Cost Calculator Bangalore | Screw Wood',
-  description: 'Calculate your exact plot construction cost, built-up area, material brand specifications, and delivery timeline in under 60 seconds.',
-};
+import { resolveSeo } from "@/lib/seo/resolve";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return resolveSeo('/ai-house-construction-calculator');
+}
 
 export default function AICalculatorPage() {
   return (

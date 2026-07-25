@@ -3,12 +3,12 @@ import PageHero from "@/components/PageHero";
 import Blog from "@/components/Blog";
 import Footer from "@/components/Footer";
 
-export const metadata = {
-  title: "News & Insights",
-  description:
-    "Construction guides, home building tips and company news from Screw Wood.",
-  alternates: { canonical: "/news" },
-};
+import type { Metadata } from 'next';
+import { resolveSeo } from "@/lib/seo/resolve";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return resolveSeo('/news');
+}
 
 export default function NewsPage() {
   return (

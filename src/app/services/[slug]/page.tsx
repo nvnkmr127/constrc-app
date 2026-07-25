@@ -16,21 +16,11 @@ export async function generateStaticParams() {
   return Object.keys(staticServices).map((slug) => ({ slug }));
 }
 
+import { resolveSeo } from '@/lib/seo/resolve';
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const service = staticServices[slug];
-  if (!service) return {};
-
-  return {
-    title: service.title,
-    description: service.description,
-    alternates: { canonical: `/services/${slug}` },
-    openGraph: {
-      title: service.title,
-      description: service.description,
-      images: [service.image],
-    },
-  };
+  return resolveSeo(`/services/${slug}`);
 }
 
 export default async function ServiceDetailPage({ params }: Props) {

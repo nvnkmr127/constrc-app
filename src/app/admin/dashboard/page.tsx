@@ -355,6 +355,13 @@ export default function AdminDashboardPage() {
             🎯 Yoast Page SEO Manager
           </button>
 
+          <Link
+            href="/admin/dashboard/pages"
+            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
+          >
+            🎯 Universal Page SEO Editor
+          </Link>
+
           <button
             onClick={() => setActiveTab('seo')}
             className={`pb-4 px-4 text-xs font-black uppercase tracking-wider transition-all border-b-2 cursor-pointer whitespace-nowrap ${

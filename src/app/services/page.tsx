@@ -6,12 +6,12 @@ import PackageComparison from "@/components/PackageComparison";
 import MaintenanceComparison from "@/components/MaintenanceComparison";
 import Footer from "@/components/Footer";
 
-export const metadata = {
-  title: "Construction & Interior Services",
-  description:
-    "Turnkey construction, interior design and home building services across Bangalore, Hyderabad, Mumbai and Delhi.",
-  alternates: { canonical: "/services" },
-};
+import type { Metadata } from 'next';
+import { resolveSeo } from "@/lib/seo/resolve";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return resolveSeo('/services');
+}
 
 export default function ServicesPage() {
   return (

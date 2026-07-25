@@ -14,22 +14,11 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
 
+import { resolveSeo } from '@/lib/seo/resolve';
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
-  if (!post) return {};
-
-  return {
-    title: `${post.title} | Screw Wood Insights`,
-    description: post.excerpt,
-    alternates: { canonical: `/news/${slug}` },
-    openGraph: {
-      type: 'article',
-      title: post.title,
-      description: post.excerpt,
-      images: [post.image],
-    },
-  };
+  return resolveSeo(`/news/${slug}`);
 }
 
 export default async function PostPage({ params }: Props) {

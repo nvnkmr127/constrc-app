@@ -15,21 +15,11 @@ export async function generateStaticParams() {
   return Object.keys(staticLocalSeoPages).map((slug) => ({ slug }));
 }
 
+import { resolveSeo } from '@/lib/seo/resolve';
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const page = staticLocalSeoPages[slug];
-  if (!page) return {};
-
-  return {
-    title: page.title,
-    description: page.description,
-    alternates: { canonical: `/${slug}` },
-    openGraph: {
-      title: page.title,
-      description: page.description,
-      images: page.image ? [page.image] : undefined,
-    },
-  };
+  return resolveSeo(`/${slug}`);
 }
 
 export default async function LocalSeoPage({ params }: Props) {

@@ -15,16 +15,11 @@ import Footer from "@/components/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { localBusinessSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: "Screw Wood - Best Construction & Interior Company in Bangalore",
-  description: "Turnkey house construction, commercial building contractors & luxury interior designers in HBR Layout, Bangalore. 100% transparent pricing & 10-year warranty.",
-  alternates: { canonical: "/" },
-  openGraph: {
-    title: "Screw Wood - Construction & Interior Design Firm Bangalore",
-    description: "Turnkey residential house construction and luxury interiors with 10-year warranty.",
-    images: ["/images/bangalore_hero_building.png"],
-  },
-};
+import { resolveSeo } from "@/lib/seo/resolve";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return resolveSeo('/');
+}
 
 export default function Home() {
   return (
