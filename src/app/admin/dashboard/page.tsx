@@ -397,6 +397,13 @@ export default function AdminDashboardPage() {
             📊 Analytics &amp; CAPI
           </Link>
 
+          <Link
+            href="/admin/dashboard/geo"
+            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
+          >
+            📍 Geo Pages &amp; NAP Audit
+          </Link>
+
           <button
             onClick={() => setActiveTab('seo')}
             className={`pb-4 px-4 text-xs font-black uppercase tracking-wider transition-all border-b-2 cursor-pointer whitespace-nowrap ${
