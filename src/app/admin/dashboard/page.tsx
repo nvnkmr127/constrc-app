@@ -256,200 +256,82 @@ export default function AdminDashboardPage() {
   );
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans">
-      {/* Header Bar */}
-      <header className="bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#f2bd19] text-slate-900 flex items-center justify-center font-black text-xl shadow-md">
-              🎯
-            </div>
-            <div>
-              <span className="text-[10px] font-black uppercase tracking-widest text-[#f2bd19] block">
-                ADMIN CONTROL PANEL &amp; YOAST SEO SUITE
-              </span>
-              <h1 className="text-xl font-black text-white tracking-tight">Screw Wood Dashboard</h1>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <Link
-              href="/"
-              target="_blank"
-              className="text-xs font-extrabold text-slate-400 hover:text-white transition-colors"
-            >
-              View Live Site ↗
-            </Link>
-            <button
-              onClick={handleLogout}
-              className="bg-slate-800 hover:bg-slate-700 text-xs font-black uppercase tracking-wider px-4 py-2 rounded-xl border border-slate-700 transition-all cursor-pointer"
-            >
-              Logout 🔒
-            </button>
-          </div>
-        </div>
-      </header>
-
-      <main className="max-w-7xl mx-auto px-4 py-8 space-y-8">
-        {/* Metric Cards Banner */}
-        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 space-y-1">
-            <span className="text-[10px] font-extrabold uppercase text-slate-500">Total Leads</span>
-            <p className="text-3xl font-black text-[#f2bd19]">{leads.length}</p>
-            <p className="text-[10px] text-slate-400 font-medium">Recorded in DB</p>
-          </div>
-
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 space-y-1">
-            <span className="text-[10px] font-extrabold uppercase text-slate-500">Published Blogs</span>
-            <p className="text-3xl font-black text-emerald-400">{publishedBlogs.length}</p>
-            <p className="text-[10px] text-slate-400 font-medium">SEO Optimized</p>
-          </div>
-
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 space-y-1">
-            <span className="text-[10px] font-extrabold uppercase text-slate-500">Local SEO Pages</span>
-            <p className="text-3xl font-black text-cyan-400">
-              {Object.keys(localSeoPages).length + Object.keys(servicePages).length}
-            </p>
-            <p className="text-[10px] text-slate-400 font-medium">Geo-targeted landing pages</p>
-          </div>
-
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 space-y-1">
-            <span className="text-[10px] font-extrabold uppercase text-slate-500">Yoast Health Score</span>
-            <p className="text-3xl font-black text-emerald-400">95 / 100</p>
-            <p className="text-[10px] text-slate-400 font-medium">Google SERP Ready</p>
-          </div>
+    <div className="space-y-6">
+      {/* Metric Cards Banner */}
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-1 shadow">
+          <span className="text-[10px] font-extrabold uppercase text-slate-500">Total Leads</span>
+          <p className="text-3xl font-black text-[#f2bd19]">{leads.length}</p>
+          <p className="text-[10px] text-slate-400 font-medium">Recorded in DB</p>
         </div>
 
-        {/* Tab Controls */}
-        <div className="flex border-b border-slate-800 gap-2 overflow-x-auto">
-          <button
-            onClick={() => setActiveTab('leads')}
-            className={`pb-4 px-4 text-xs font-black uppercase tracking-wider transition-all border-b-2 cursor-pointer whitespace-nowrap ${
-              activeTab === 'leads'
-                ? 'border-[#f2bd19] text-[#f2bd19]'
-                : 'border-transparent text-slate-400 hover:text-white'
-            }`}
-          >
-            📥 Leads Inbox ({leads.length})
-          </button>
-
-          <button
-            onClick={() => setActiveTab('blogs')}
-            className={`pb-4 px-4 text-xs font-black uppercase tracking-wider transition-all border-b-2 cursor-pointer whitespace-nowrap ${
-              activeTab === 'blogs'
-                ? 'border-[#f2bd19] text-[#f2bd19]'
-                : 'border-transparent text-slate-400 hover:text-white'
-            }`}
-          >
-            ✍️ Blog Writer &amp; Yoast SEO
-          </button>
-
-          <button
-            onClick={() => setActiveTab('pagesSeo')}
-            className={`pb-4 px-4 text-xs font-black uppercase tracking-wider transition-all border-b-2 cursor-pointer whitespace-nowrap ${
-              activeTab === 'pagesSeo'
-                ? 'border-[#f2bd19] text-[#f2bd19]'
-                : 'border-transparent text-slate-400 hover:text-white'
-            }`}
-          >
-            🎯 Yoast Page SEO Manager
-          </button>
-
-          <Link
-            href="/admin/dashboard/pages"
-            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
-          >
-            🎯 Universal Page SEO Editor
-          </Link>
-
-          <Link
-            href="/admin/dashboard/crawl/robots"
-            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
-          >
-            🤖 robots.txt Manager
-          </Link>
-
-          <Link
-            href="/admin/dashboard/crawl/sitemap"
-            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
-          >
-            🗺️ XML Sitemap Engine
-          </Link>
-
-          <Link
-            href="/admin/dashboard/crawl/redirects"
-            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
-          >
-            🔀 301/302 Redirect Engine
-          </Link>
-
-          <Link
-            href="/admin/dashboard/schema"
-            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
-          >
-            🧱 Schema.org Studio
-          </Link>
-
-          <Link
-            href="/admin/dashboard/tracking"
-            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
-          >
-            📊 Analytics &amp; CAPI
-          </Link>
-
-          <Link
-            href="/admin/dashboard/geo"
-            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
-          >
-            📍 Geo Pages &amp; NAP Audit
-          </Link>
-
-          <Link
-            href="/admin/dashboard/insights"
-            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
-          >
-            📈 Search Console &amp; Insights
-          </Link>
-
-          <Link
-            href="/admin/dashboard/tech"
-            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
-          >
-            ⚙️ Technical SEO &amp; Vitals
-          </Link>
-
-          <Link
-            href="/admin/dashboard/ai"
-            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
-          >
-            🤖 AI Search &amp; llms.txt
-          </Link>
-
-          <Link
-            href="/admin/dashboard/audits"
-            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
-          >
-            🚨 Health Audits &amp; Drift
-          </Link>
-
-          <Link
-            href="/admin/dashboard/media"
-            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
-          >
-            🖼️ Image SEO &amp; OG Cards
-          </Link>
-
-          <button
-            onClick={() => setActiveTab('seo')}
-            className={`pb-4 px-4 text-xs font-black uppercase tracking-wider transition-all border-b-2 cursor-pointer whitespace-nowrap ${
-              activeTab === 'seo'
-                ? 'border-[#f2bd19] text-[#f2bd19]'
-                : 'border-transparent text-slate-400 hover:text-white'
-            }`}
-          >
-            📍 Local SEO Directory
-          </button>
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-1 shadow">
+          <span className="text-[10px] font-extrabold uppercase text-slate-500">Published Blogs</span>
+          <p className="text-3xl font-black text-emerald-400">{publishedBlogs.length}</p>
+          <p className="text-[10px] text-slate-400 font-medium">SEO Optimized</p>
         </div>
+
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-1 shadow">
+          <span className="text-[10px] font-extrabold uppercase text-slate-500">Local SEO Pages</span>
+          <p className="text-3xl font-black text-cyan-400">
+            {Object.keys(localSeoPages).length + Object.keys(servicePages).length}
+          </p>
+          <p className="text-[10px] text-slate-400 font-medium">Geo-targeted landing pages</p>
+        </div>
+
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-1 shadow">
+          <span className="text-[10px] font-extrabold uppercase text-slate-500">Yoast Health Score</span>
+          <p className="text-3xl font-black text-emerald-400">95 / 100</p>
+          <p className="text-[10px] text-slate-400 font-medium">Google SERP Ready</p>
+        </div>
+      </div>
+
+      {/* Primary Tab Controls */}
+      <div className="flex border-b border-slate-800 gap-2 overflow-x-auto">
+        <button
+          onClick={() => setActiveTab('leads')}
+          className={`pb-3 px-4 text-xs font-black uppercase tracking-wider transition-all border-b-2 cursor-pointer whitespace-nowrap ${
+            activeTab === 'leads'
+              ? 'border-[#f2bd19] text-[#f2bd19]'
+              : 'border-transparent text-slate-400 hover:text-white'
+          }`}
+        >
+          📥 Leads Inbox ({leads.length})
+        </button>
+
+        <button
+          onClick={() => setActiveTab('blogs')}
+          className={`pb-3 px-4 text-xs font-black uppercase tracking-wider transition-all border-b-2 cursor-pointer whitespace-nowrap ${
+            activeTab === 'blogs'
+              ? 'border-[#f2bd19] text-[#f2bd19]'
+              : 'border-transparent text-slate-400 hover:text-white'
+          }`}
+        >
+          ✍️ Blog Writer &amp; Yoast SEO
+        </button>
+
+        <button
+          onClick={() => setActiveTab('pagesSeo')}
+          className={`pb-3 px-4 text-xs font-black uppercase tracking-wider transition-all border-b-2 cursor-pointer whitespace-nowrap ${
+            activeTab === 'pagesSeo'
+              ? 'border-[#f2bd19] text-[#f2bd19]'
+              : 'border-transparent text-slate-400 hover:text-white'
+          }`}
+        >
+          🎯 Yoast Page SEO Manager
+        </button>
+
+        <button
+          onClick={() => setActiveTab('seo')}
+          className={`pb-3 px-4 text-xs font-black uppercase tracking-wider transition-all border-b-2 cursor-pointer whitespace-nowrap ${
+            activeTab === 'seo'
+              ? 'border-[#f2bd19] text-[#f2bd19]'
+              : 'border-transparent text-slate-400 hover:text-white'
+          }`}
+        >
+          📍 Local SEO Directory
+        </button>
+      </div>
 
         {/* TAB 1: LEADS INBOX */}
         {activeTab === 'leads' && (
@@ -860,7 +742,6 @@ export default function AdminDashboardPage() {
             </div>
           </div>
         )}
-      </main>
     </div>
   );
 }
