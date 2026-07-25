@@ -5,6 +5,7 @@ import CallModal from "@/components/CallModal";
 import JsonLd from "@/components/JsonLd";
 import Analytics from "@/components/Analytics";
 import ConsentBanner from "@/components/ConsentBanner";
+import WebVitals from "@/components/WebVitals";
 import { getSchemasForPath } from "@/lib/seo/schema-resolution";
 import { getPublicTrackingConfig } from "@/app/actions/tracking";
 
@@ -42,6 +43,7 @@ export default async function RootLayout({
         {children}
         <CallModal />
         <ConsentBanner />
+        <WebVitals />
       </body>
     </html>
   );
