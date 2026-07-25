@@ -366,7 +366,14 @@ export default function AdminDashboardPage() {
             href="/admin/dashboard/crawl/robots"
             className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
           >
-            🤖 robots.txt Crawl Manager
+            🤖 robots.txt Manager
+          </Link>
+
+          <Link
+            href="/admin/dashboard/crawl/sitemap"
+            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
+          >
+            🗺️ XML Sitemap Engine
           </Link>
 
           <button
