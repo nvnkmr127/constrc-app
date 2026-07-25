@@ -13,7 +13,7 @@ const steps = [
     title: 'Raise a Request',
     subtitle: 'Share your site location & initial requirements',
     bullets: [
-      'Submit your construction request online or call our Bangalore team at +91 98765 43210.',
+      'Submit your construction request online or call our Bangalore team at +91 9014303409.',
       'Our senior project consultant connects with you within 2 hours to understand plot size, location, and vision.',
       'Schedule a free 1-on-1 consultation with a technical specialist at your convenient time.',
     ],
@@ -389,7 +389,7 @@ export default function HowItWorksPage() {
                         className="w-full h-full object-cover"
                         src="/images/bangalore_hero_building.png"
                       />
-                      <div className="absolute bottom-2 left-2 bg-black/70 px-3 py-1 rounded-lg text-[10px] text-white font-mono">
+                      <div className="absolute bottom-2 left-2 bg-black/70 px-3 py-1 rounded-lg text-[10px] text-white">
                         📷 Captured Today 09:30 AM
                       </div>
                     </div>

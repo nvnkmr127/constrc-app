@@ -1,165 +1,238 @@
+'use client';
+
+import React, { useState } from 'react';
+import { openCallModal } from '@/components/CallModal';
+
+interface Project {
+  id: string;
+  title: string;
+  category: 'villas' | 'apartments' | 'interiors';
+  location: string;
+  bua: string;
+  packageTier: string;
+  year: string;
+  image: string;
+}
+
+const PROJECTS: Project[] = [
+  {
+    id: '1',
+    title: 'Luxury 4BHK Villa & Terrace Garden',
+    category: 'villas',
+    location: 'Whitefield, Bengaluru',
+    bua: '3,850 sq.ft.',
+    packageTier: 'SIGNATURE (₹2,349/sqft)',
+    year: 'Delivered 2025',
+    image: '/images/bangalore_commercial_complex.png',
+  },
+  {
+    id: '2',
+    title: 'Modern G+3 Residential Apartment',
+    category: 'apartments',
+    location: 'HBR Layout, Bengaluru',
+    bua: '6,400 sq.ft.',
+    packageTier: 'PRIME (₹2,049/sqft)',
+    year: 'Delivered 2025',
+    image: '/images/bangalore_hero_building.png',
+  },
+  {
+    id: '3',
+    title: 'Contemporary Villa Interior Design',
+    category: 'interiors',
+    location: 'Indiranagar, Bengaluru',
+    bua: '2,600 sq.ft.',
+    packageTier: 'ELITE (₹2,699/sqft)',
+    year: 'Delivered 2024',
+    image: '/images/bangalore_modern_interior.png',
+  },
+  {
+    id: '4',
+    title: 'Greenview Independent Duplex',
+    category: 'villas',
+    location: 'Sarjapur Road, Bengaluru',
+    bua: '4,200 sq.ft.',
+    packageTier: 'PRIME (₹2,049/sqft)',
+    year: 'Delivered 2024',
+    image: '/images/bangalore_house_construction.png',
+  },
+];
+
 export default function Projects() {
+  const [activeTab, setActiveTab] = useState<'all' | 'villas' | 'apartments' | 'interiors'>('all');
+
+  const filteredProjects = activeTab === 'all'
+    ? PROJECTS
+    : PROJECTS.filter((p) => p.category === activeTab);
+
   return (
     <>
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <div className="w-10 h-[2px] bg-primary-orange"></div>
-              <span className="text-primary-orange font-bold uppercase tracking-widest text-xs">Our Projects</span>
+      <section className="py-20 md:py-28 bg-white" id="projects">
+        <div className="max-w-7xl mx-auto px-4 space-y-12">
+          {/* Header & Filter Tabs */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="space-y-3 max-w-2xl">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-[#f2bd19]/15 text-slate-900 border border-[#f2bd19]/40 text-xs font-black uppercase tracking-widest">
+                ⚡ PORTFOLIO SHOWCASE
+              </span>
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                Our Landmark Construction Projects
+              </h2>
+              <p className="text-slate-600 text-sm md:text-base font-medium">
+                Explore turnkey independent houses, duplex villas, and premium interiors built with 430+ QASCON quality checks across Bengaluru.
+              </p>
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">We Provide Effective Solutions in Construction</h2>
+
+            {/* Filter Buttons */}
+            <div className="flex flex-wrap gap-2 bg-slate-100 p-1.5 rounded-2xl w-fit">
+              {[
+                { id: 'all', label: 'All Projects' },
+                { id: 'villas', label: 'Villas & Duplex' },
+                { id: 'apartments', label: 'Apartments' },
+                { id: 'interiors', label: 'Interiors' },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveTab(tab.id as any)}
+                  className={`px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all cursor-pointer ${
+                    activeTab === tab.id
+                      ? 'bg-slate-900 text-white shadow-md'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </div>
-          {/* Swipeable Carousel on Mobile / 2-Col Grid on Desktop */}
+
+          {/* Swipeable Grid / Mobile Touch Carousel */}
           <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 md:pb-0 md:grid md:grid-cols-2 md:overflow-visible">
-            {/* Project Item 1 */}
-            <div className="min-w-[280px] sm:min-w-[340px] md:min-w-0 snap-center bg-white p-5 md:p-6 rounded-[36px] shadow-sm flex flex-col group border border-slate-100 shrink-0 md:shrink">
-              <div className="relative rounded-[30px] overflow-hidden mb-4 h-[300px] sm:h-[360px]">
-                <img
-                  alt="Project"
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                  src="/images/bangalore_commercial_complex.png"
-                />
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                  <div className="bg-white/80 backdrop-blur-md px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
-                    <span className="text-[11px] font-bold text-dark-charcoal">📍 Whitefield, Bangalore</span>
-                  </div>
-                  <div className="bg-primary-orange p-2 rounded-full text-white text-xs">→</div>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold ml-1 text-slate-900">Luxury Duplex Residence</h3>
-            </div>
+            {filteredProjects.map((project) => (
+              <div
+                key={project.id}
+                className="min-w-[290px] sm:min-w-[340px] md:min-w-0 snap-center bg-white rounded-[32px] p-5 md:p-6 border border-slate-200/80 shadow-md flex flex-col justify-between group hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 shrink-0 md:shrink"
+              >
+                {/* Image Container with Badges */}
+                <div className="relative rounded-[26px] overflow-hidden mb-5 h-[280px] sm:h-[340px]">
+                  <img
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    src={project.image}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
 
-            {/* Project Item 2 */}
-            <div className="min-w-[280px] sm:min-w-[340px] md:min-w-0 snap-center bg-white p-5 md:p-6 rounded-[36px] shadow-sm flex flex-col group border border-slate-100 shrink-0 md:shrink">
-              <div className="relative rounded-[30px] overflow-hidden mb-4 h-[300px] sm:h-[360px]">
-                <img
-                  alt="Project"
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                  src="/images/bangalore_hero_building.png"
-                />
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                  <div className="bg-white/80 backdrop-blur-md px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
-                    <span className="text-[11px] font-bold text-dark-charcoal">📍 HBR Layout, Bangalore</span>
+                  {/* Top Floating Badges */}
+                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+                    <span className="bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black text-slate-900 shadow-md uppercase tracking-wider">
+                      {project.packageTier}
+                    </span>
+                    <span className="bg-[#f2bd19] text-slate-900 px-3 py-1 rounded-full text-[10px] font-black shadow-md uppercase tracking-wider">
+                      {project.year}
+                    </span>
                   </div>
-                  <div className="bg-primary-orange p-2 rounded-full text-white text-xs">→</div>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold ml-1 text-slate-900">Modern G+3 Residential Complex</h3>
-            </div>
 
-            {/* Project Item 3 */}
-            <div className="min-w-[280px] sm:min-w-[340px] md:min-w-0 snap-center bg-white p-5 md:p-6 rounded-[36px] shadow-sm flex flex-col group border border-slate-100 shrink-0 md:shrink">
-              <div className="relative rounded-[30px] overflow-hidden mb-4 h-[300px] sm:h-[360px]">
-                <img
-                  alt="Project"
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                  src="/images/bangalore_modern_interior.png"
-                />
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                  <div className="bg-white/80 backdrop-blur-md px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
-                    <span className="text-[11px] font-bold text-dark-charcoal">📍 Indiranagar, Bangalore</span>
-                  </div>
-                  <div className="bg-primary-orange p-2 rounded-full text-white text-xs">→</div>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold ml-1 text-slate-900">Premier Villa Interior Design</h3>
-            </div>
+                  {/* Bottom Image Overlay Specs */}
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                    <div className="space-y-0.5">
+                      <span className="text-[11px] font-bold text-slate-200 flex items-center gap-1">
+                        📍 {project.location}
+                      </span>
+                      <span className="text-[10px] font-medium text-slate-300 block">
+                        BUA: {project.bua}
+                      </span>
+                    </div>
 
-            {/* Project Item 4 */}
-            <div className="min-w-[280px] sm:min-w-[340px] md:min-w-0 snap-center bg-white p-5 md:p-6 rounded-[36px] shadow-sm flex flex-col group border border-slate-100 shrink-0 md:shrink">
-              <div className="relative rounded-[30px] overflow-hidden mb-4 h-[300px] sm:h-[360px]">
-                <img
-                  alt="Project"
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                  src="/images/bangalore_house_construction.png"
-                />
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                  <div className="bg-white/80 backdrop-blur-md px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
-                    <span className="text-[11px] font-bold text-dark-charcoal">📍 Sarjapur Road, Bangalore</span>
+                    <button
+                      type="button"
+                      onClick={openCallModal}
+                      className="bg-white hover:bg-[#f2bd19] text-slate-900 p-3 rounded-2xl shadow-lg transition-colors cursor-pointer"
+                      aria-label="View Project Specs"
+                    >
+                      <span className="text-xs font-black">→</span>
+                    </button>
                   </div>
-                  <div className="bg-primary-orange p-2 rounded-full text-white text-xs">→</div>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-primary-orange transition-colors">
+                    {project.title}
+                  </h3>
+                  <div className="flex justify-between items-center text-xs font-bold text-slate-500 pt-1 border-t border-slate-100">
+                    <span>430+ QASCON Checked</span>
+                    <span className="text-slate-900">Zero Cost Delay Penalty</span>
+                  </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold ml-1 text-slate-900">Greenview Premium Villa</h3>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row gap-16">
+      {/* Expert Team Showcase */}
+      <section className="py-20 bg-slate-50 border-t border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row gap-12 items-center">
           <div className="md:w-1/2 grid grid-cols-2 gap-4">
             <div className="relative group">
               <img
                 alt="Rahul Sharma"
-                className="rounded-3xl w-full h-[350px] object-cover"
+                className="rounded-3xl w-full h-[320px] object-cover shadow-lg border border-slate-200"
                 src="/images/indian_professional_man_1.png"
               />
-              <div className="absolute bottom-4 left-4 right-4 bg-dark-charcoal p-4 rounded-2xl flex justify-between items-center">
+              <div className="absolute bottom-4 left-4 right-4 bg-slate-950/90 backdrop-blur-md p-3.5 rounded-2xl flex justify-between items-center text-white">
                 <div>
-                  <h5 className="text-white font-bold text-sm">Rahul Sharma</h5>
-                  <p className="text-primary-orange text-[10px] uppercase">Chief Financial Officer</p>
+                  <h5 className="font-extrabold text-xs">Rahul Sharma</h5>
+                  <p className="text-[#f2bd19] text-[10px] font-bold uppercase tracking-wider">Chief Structural Engineer</p>
                 </div>
-                <div className="bg-primary-orange p-2 rounded-full text-white">🔗</div>
+                <span className="text-xs">🏗️</span>
               </div>
             </div>
+
             <div className="relative group">
               <img
                 alt="Anjali Desai"
-                className="rounded-3xl w-full h-[350px] object-cover"
+                className="rounded-3xl w-full h-[320px] object-cover shadow-lg border border-slate-200"
                 src="/images/indian_professional_woman_1.png"
               />
-              <div className="absolute bottom-4 left-4 right-4 bg-dark-charcoal p-4 rounded-2xl flex justify-between items-center">
+              <div className="absolute bottom-4 left-4 right-4 bg-slate-950/90 backdrop-blur-md p-3.5 rounded-2xl flex justify-between items-center text-white">
                 <div>
-                  <h5 className="text-white font-bold text-sm">Anjali Desai</h5>
-                  <p className="text-primary-orange text-[10px] uppercase">Project Manager</p>
+                  <h5 className="font-extrabold text-xs">Anjali Desai</h5>
+                  <p className="text-[#f2bd19] text-[10px] font-bold uppercase tracking-wider">Lead Architect</p>
                 </div>
-                <div className="bg-primary-orange p-2 rounded-full text-white">🔗</div>
+                <span className="text-xs">📐</span>
               </div>
             </div>
-            <div className="col-span-2 flex gap-4 overflow-x-auto pb-4">
-              <img
-                alt="Small"
-                className="w-24 h-24 md:w-32 md:h-32 rounded-2xl object-cover grayscale hover:grayscale-0 cursor-pointer"
-                src="/images/indian_professional_man_2.png"
-              />
-              <img
-                alt="Small"
-                className="w-32 h-32 rounded-2xl object-cover grayscale hover:grayscale-0 cursor-pointer"
-                src="/images/indian_professional_woman_1.png"
-              />
-              <img
-                alt="Small"
-                className="w-32 h-32 rounded-2xl object-cover grayscale hover:grayscale-0 cursor-pointer"
-                src="/images/indian_professional_man_1.png"
-              />
-            </div>
           </div>
-          <div className="md:w-1/2 flex flex-col justify-center">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-[2px] bg-primary-orange"></div>
-              <span className="text-primary-orange font-bold uppercase tracking-widest text-xs">Our Expert Member</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-dark-charcoal">Meet Our Expert Team</h2>
-            <p className="text-gray-500 mb-10 leading-relaxed">
-              We are driven to improve the lives of our clients, our employees, and our community through our commitment to leadership.
+
+          <div className="md:w-1/2 space-y-6">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#f2bd19]/15 text-slate-900 border border-[#f2bd19]/40 text-xs font-black uppercase tracking-widest">
+              ⚡ BENGALURU EXPERTS
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+              Driven By Senior Architects &amp; Structural Engineers
+            </h2>
+            <p className="text-slate-600 text-sm md:text-base font-medium leading-relaxed">
+              Every Screw Wood project is supervised by dedicated structural engineers and BBMP/BDA plan architects to ensure zero structural compromises.
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-40">
-              <img alt="Logo" src="https://placehold.co/150x50/888?text=Client+Logo/AB6AXuAJ9jPEz_ObCivLzqb9C77PYBKlagNuXdvSNKzpzp5rVrRex_4fIiba6mmaYza5Y875BCiGefQLJPqoc98IEStHz3wdwyBfPCjVCCdKrqmQs-3BetUgVYVIEE0PmC9s0GU4vct7jj-Ut3n6enlOm1CrGSpVG1xgfkJiWO694txU_wMsOHE2UqoNoSwTGl9L6-Bq9ENUmt2ehqKEGU65rfiY1U1RbGNJOt2SyTEx2YXnTl-upMY0lgGKsPI10XZOFIri4RKpBOQV6qm2" />
-              <img alt="Logo" src="https://placehold.co/150x50/888?text=Client+Logo/AB6AXuC7p4vIYxoXkyQ8A7Tlr_mIbpsTPhAD8hqZbpIcmYqFr0okrF_dbnz_wlBuqBrpw_Uhr3b6PA052LVwtzOa1oGCT_KV1CXGLNIIMqaguDbUkU8vZxlt35R2qeWJ7glyPU8zGjllsva_QryyTpzPb3QwbZYHQU4L3Q3SaE8SklifsefkbhTxY-9UCHf0TRVxeq1C7QGK3kJMh4Danf1p4XbCt0R63xAlUlpMNLr3RVGBhE42opmmrnBs0aZZucNK6OwxqEAbjQmEF3Us" />
-              <img alt="Logo" src="https://placehold.co/150x50/888?text=Client+Logo/AB6AXuCK9jeCMiP05aVZqPO7eAhsgeQJQ2oMCrs-g3OXpvZM1emIr_njp1a3ho35-MpdEivB4bTY5DMFO9XVwjoGVw4A3kU9Tquk-BtN3OEToW2LbC3jHqilpsFl1FjmLFI_wzF8eYOZ8DXqn3-HB1o5IbY6Tz-EY6Bl5D76DDinMgRVbeWphLEQ55pMqwGOfHkoWSpq2vcEwBvJFeVufjgrO3wsBXTgZR71reBUoSFr5rVv56w8wfzPegJ2ed329XiOubin_u7N7TnngOTl" />
-              <img alt="Logo" src="https://placehold.co/150x50/888?text=Client+Logo/AB6AXuAzF5QuLD8H8VSE5m1tR1EbpxCHAyMrzJxkMjR8Wg4P44bToL5pakYtJhrbJhNbthaJk8lvtk5RxPDgxfWaeXpT6ccIQsh0uty2-kYHheYi3irkf4AUGFuxiuubreGj4GJSFkvJwptzdb4Y6L6jnBwYHC3-JuhTviJz_Rv1Nt56LzTSkGh_H2sCA6UgHIPQia2fKhNhOHEVVeo8k0qfTNZSJF_V6EhhHQvXYpFO-UJYqfg8KCBT3gJn-GczDZKKtBKBmxngX2QjWx8L" />
-              <img alt="Logo" src="https://placehold.co/150x50/888?text=Client+Logo/AB6AXuDbW1kSEu-fmVJ9Z5JULq5Ej6gMG5hPNbamU1uO5dx0u6eE-ntLfo8nhz5oARIyNBP8Me5hNRw6ipImmGINlsfoXDO9WWb_nKW1KrB7aPS3jMjPcxUjahdOcyKQnJi538GHEp2_0SfB5XAfPXk6QM8_BtHRGWefGgI9z5ECXOmNp-HCkmLVThdLEO5na-OuPyJ36FsMrFhHM1NNogjrU5jZPsGTLdAfpVpDxF2-myQzwT9tKVrRonXt314t05bew5vm0yylMskGAwor" />
+
+            <div className="pt-2">
+              <button
+                type="button"
+                onClick={openCallModal}
+                className="bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs uppercase tracking-wider px-8 py-4 rounded-2xl shadow-lg transition-all cursor-pointer flex items-center gap-2"
+              >
+                CONSULT OUR ARCHITECT TEAM 📞
+              </button>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="bg-primary-orange py-6 overflow-hidden flex whitespace-nowrap border-y border-black/10">
-        <div className="flex items-center space-x-12 animate-marquee text-white font-black text-2xl uppercase italic">
-          <span>Building Construction ★ Home Construction ★ Material Recycling ★ Tools and Equipment</span>
-          <span>Building Construction ★ Home Construction ★ Material Recycling ★ Tools and Equipment</span>
+      {/* Marquee Ticker Banner */}
+      <div className="bg-[#f2bd19] py-5 overflow-hidden flex whitespace-nowrap border-y border-slate-900/10">
+        <div className="flex items-center space-x-12 animate-marquee text-slate-950 font-black text-xl md:text-2xl uppercase tracking-wider">
+          <span>Building Construction ★ Turnkey Villa Construction ★ Architectural Floor Plans ★ Structural Quality Audits</span>
+          <span>Building Construction ★ Turnkey Villa Construction ★ Architectural Floor Plans ★ Structural Quality Audits</span>
         </div>
       </div>
     </>

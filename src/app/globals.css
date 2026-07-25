@@ -7,6 +7,8 @@
 
 @theme {
   --font-sans: Arial, Helvetica, sans-serif;
+  --font-serif: Arial, Helvetica, sans-serif;
+  --font-mono: Arial, Helvetica, sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -43,14 +45,31 @@
   }
 }
 
+*:not(.material-symbols-outlined) {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 input, button, select, textarea {
-  font-family: inherit;
+  font-family: Arial, Helvetica, sans-serif !important;
 }

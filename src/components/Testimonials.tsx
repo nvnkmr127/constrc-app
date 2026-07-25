@@ -194,172 +194,176 @@ export default function Testimonials() {
           </div>
         </div>
       </section>
-      
-      <section className="py-24 bg-slate-50 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 mb-16 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-widest mb-6">
-            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-            Wall of Love
-          </div>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">What Our Clients Say</h2>
-          <p className="text-slate-500 font-medium">121 verified Google reviews • 5.0 star rating • Trusted across India.</p>
+
+      <section className="py-20 md:py-28 bg-slate-50 overflow-hidden" id="testimonials">
+        <div className="max-w-7xl mx-auto px-4 mb-14 text-center space-y-3">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#f2bd19]/15 text-slate-900 border border-[#f2bd19]/40 text-xs font-black uppercase tracking-widest">
+            ⚡ REAL FEEDBACK FROM BENGALURU HOMEOWNERS
+          </span>
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+            What Our Clients Say
+          </h2>
+          <p className="text-slate-600 text-sm md:text-base font-medium max-w-xl mx-auto">
+            121+ verified Google reviews • 5.0 star rating • Trusted across Bangalore for quality home construction.
+          </p>
         </div>
-        <div className="relative w-full overflow-hidden mb-16">
+
+        {/* Marquee Carousel Container with Side Fade Overlays */}
+        <div className="relative w-full overflow-hidden mb-12">
+          {/* Left Side Fade */}
+          <div className="absolute top-0 bottom-0 left-0 w-16 md:w-32 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
+          {/* Right Side Fade */}
+          <div className="absolute top-0 bottom-0 right-0 w-16 md:w-32 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
+
           <div className="flex animate-marquee-slow hover:[animation-play-state:paused] space-x-6 w-max px-4">
             {/* Card 1 */}
-            <div className="w-[300px] sm:w-[450px] bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-sm flex flex-col shrink-0">
-              <div className="flex justify-between items-start mb-6">
-                <div className="flex text-yellow-400 text-lg">★★★★★</div>
-                <img
-                  alt="Google"
-                  className="w-6 h-6"
-                  src="/images/indian_professional_man_1.png"
-                />
+            <div className="w-[310px] sm:w-[440px] bg-white rounded-[32px] p-6 sm:p-8 border border-slate-200/80 shadow-md flex flex-col justify-between shrink-0 hover:shadow-xl hover:-translate-y-1 transition-all">
+              <div>
+                <div className="flex justify-between items-center mb-5">
+                  <div className="flex text-[#f2bd19] text-base space-x-0.5 font-bold">
+                    ★★★★★
+                  </div>
+                  <span className="bg-emerald-50 text-emerald-700 text-[10px] font-black uppercase px-2.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1">
+                    ✓ Verified Owner
+                  </span>
+                </div>
+                <p className="text-slate-700 text-sm sm:text-base mb-6 italic leading-relaxed">
+                  "I had my home construction done by Screw Wood. They provide the best quality and service that every company can't provide. Truly the best tech-enabled team in Bangalore!"
+                </p>
               </div>
-              <p className="text-slate-600 text-lg mb-8 italic flex-grow">"I had my home construction done by Screw Wood. They provide the best quality and service that every company can't provide. They are the best in the industry."</p>
-              <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
-                <div className="w-12 h-12 rounded-full bg-sky-500 flex items-center justify-center text-white font-bold text-lg">MR</div>
-                <div className="flex-grow">
-                  <h5 className="text-slate-900 font-bold">Mohammed Rehan</h5>
-                  <p className="text-slate-400 text-xs uppercase font-bold">Happy Client</p>
+
+              <div>
+                <div className="flex items-center gap-3.5 border-t border-slate-100 pt-5">
+                  <img
+                    alt="Mohammed Rehan"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-[#f2bd19] shadow-sm shrink-0"
+                    src="/images/indian_professional_man_1.png"
+                  />
+                  <div className="flex-grow min-w-0">
+                    <h5 className="text-slate-900 font-extrabold text-sm truncate">Mohammed Rehan</h5>
+                    <p className="text-slate-500 text-[11px] font-medium truncate">Owner • Villa in Whitefield, Bangalore</p>
+                  </div>
+                </div>
+                <div className="mt-3 flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase">
+                  <span>Google Review</span> • <span className="text-[#f2bd19] font-black">5.0 ★</span>
                 </div>
               </div>
-              <div className="mt-4 flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase">
-                <img alt="Google" className="w-4 h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg_xkql96U6o2JB1YYdFR5IYCjecRx7ETRGZr6itw2blu15SMZY7CYf5wnFZNkbBK-R8xYwR9towv26Ksx1LlZiU1LHkz7RlpFt5Rrm6YcsfbjnVCXNRWpkmuzXug5QiJETxSYckJydOfqxj6evVHvLITKO7ozWwFWSh_D__ZQQhzEyRrbqXkJCZw35oLv6uDtwcCwWbWulpKS09kGJqy5uOYOCO3F_6Wl2yG6ZU_Y9cMIu4Bzql4YaZDpfR80yomZh0O2HWMYeWVg" />
-                Google Review • Screw Wood, Bangalore
-              </div>
             </div>
+
             {/* Card 2 */}
-            <div className="w-[450px] bg-white rounded-3xl p-8 border border-slate-100 shadow-sm flex flex-col">
-              <div className="flex justify-between items-start mb-6">
-                <div className="flex text-yellow-400 text-lg">★★★★★</div>
-                <img
-                  alt="Google"
-                  className="w-6 h-6"
-                  src="/images/indian_professional_woman_1.png"
-                />
+            <div className="w-[310px] sm:w-[440px] bg-white rounded-[32px] p-6 sm:p-8 border border-slate-200/80 shadow-md flex flex-col justify-between shrink-0 hover:shadow-xl hover:-translate-y-1 transition-all">
+              <div>
+                <div className="flex justify-between items-center mb-5">
+                  <div className="flex text-[#f2bd19] text-base space-x-0.5 font-bold">
+                    ★★★★★
+                  </div>
+                  <span className="bg-emerald-50 text-emerald-700 text-[10px] font-black uppercase px-2.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1">
+                    ✓ Verified Owner
+                  </span>
+                </div>
+                <p className="text-slate-700 text-sm sm:text-base mb-6 italic leading-relaxed">
+                  "I recently got my home constructed by Screw Wood and found this was the best place. They provided the best quality of work with real dedication and 100% escrow safety."
+                </p>
               </div>
-              <p className="text-slate-600 text-lg mb-8 italic flex-grow">"I recently got my home constructed by Screw Wood and found this was the best place. They provided the best quality of work with real dedication."</p>
-              <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
-                <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-lg">JS</div>
-                <div className="flex-grow">
-                  <h5 className="text-slate-900 font-bold">Jhansi Sony</h5>
-                  <p className="text-slate-400 text-xs uppercase font-bold">Happy Client</p>
+
+              <div>
+                <div className="flex items-center gap-3.5 border-t border-slate-100 pt-5">
+                  <img
+                    alt="Jhansi Sony"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-[#f2bd19] shadow-sm shrink-0"
+                    src="/images/indian_professional_woman_1.png"
+                  />
+                  <div className="flex-grow min-w-0">
+                    <h5 className="text-slate-900 font-extrabold text-sm truncate">Jhansi Sony</h5>
+                    <p className="text-slate-500 text-[11px] font-medium truncate">Owner • 3BHK Duplex in Koramangala</p>
+                  </div>
+                </div>
+                <div className="mt-3 flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase">
+                  <span>Google Review</span> • <span className="text-[#f2bd19] font-black">5.0 ★</span>
                 </div>
               </div>
-              <div className="mt-4 flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase">
-                <img alt="Google" className="w-4 h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg_xkql96U6o2JB1YYdFR5IYCjecRx7ETRGZr6itw2blu15SMZY7CYf5wnFZNkbBK-R8xYwR9towv26Ksx1LlZiU1LHkz7RlpFt5Rrm6YcsfbjnVCXNRWpkmuzXug5QiJETxSYckJydOfqxj6evVHvLITKO7ozWwFWSh_D__ZQQhzEyRrbqXkJCZw35oLv6uDtwcCwWbWulpKS09kGJqy5uOYOCO3F_6Wl2yG6ZU_Y9cMIu4Bzql4YaZDpfR80yomZh0O2HWMYeWVg" />
-                Google Review • Screw Wood, Bangalore
-              </div>
             </div>
+
             {/* Card 3 */}
-            <div className="w-[450px] bg-white rounded-3xl p-8 border border-slate-100 shadow-sm flex flex-col">
-              <div className="flex justify-between items-start mb-6">
-                <div className="flex text-yellow-400 text-lg">★★★★★</div>
-                <img
-                  alt="Google"
-                  className="w-6 h-6"
-                  src="/images/indian_professional_man_2.png"
-                />
+            <div className="w-[310px] sm:w-[440px] bg-white rounded-[32px] p-6 sm:p-8 border border-slate-200/80 shadow-md flex flex-col justify-between shrink-0 hover:shadow-xl hover:-translate-y-1 transition-all">
+              <div>
+                <div className="flex justify-between items-center mb-5">
+                  <div className="flex text-[#f2bd19] text-base space-x-0.5 font-bold">
+                    ★★★★★
+                  </div>
+                  <span className="bg-emerald-50 text-emerald-700 text-[10px] font-black uppercase px-2.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1">
+                    ✓ Verified Owner
+                  </span>
+                </div>
+                <p className="text-slate-700 text-sm sm:text-base mb-6 italic leading-relaxed">
+                  "I chose Screw Wood for my residence in Jayanagar Bangalore. I got the best experience and the structural execution was top class. Highly recommended!"
+                </p>
               </div>
-              <p className="text-slate-600 text-lg mb-8 italic flex-grow">"I chose Screw Wood for my apartment in Jayanagar Bangalore. I have got the best experience and the work on my project was excellent. Highly recommended."</p>
-              <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
-                <div className="w-12 h-12 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold text-lg">PM</div>
-                <div className="flex-grow">
-                  <h5 className="text-slate-900 font-bold">Prabavathi Muthukuru</h5>
-                  <p className="text-slate-400 text-xs uppercase font-bold">Happy Client</p>
+
+              <div>
+                <div className="flex items-center gap-3.5 border-t border-slate-100 pt-5">
+                  <img
+                    alt="Prabavathi Muthukuru"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-[#f2bd19] shadow-sm shrink-0"
+                    src="/images/indian_professional_man_2.png"
+                  />
+                  <div className="flex-grow min-w-0">
+                    <h5 className="text-slate-900 font-extrabold text-sm truncate">Prabavathi Muthukuru</h5>
+                    <p className="text-slate-500 text-[11px] font-medium truncate">Owner • Independent House in Jayanagar</p>
+                  </div>
+                </div>
+                <div className="mt-3 flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase">
+                  <span>Google Review</span> • <span className="text-[#f2bd19] font-black">5.0 ★</span>
                 </div>
               </div>
-              <div className="mt-4 flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase">
-                <img alt="Google" className="w-4 h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg_xkql96U6o2JB1YYdFR5IYCjecRx7ETRGZr6itw2blu15SMZY7CYf5wnFZNkbBK-R8xYwR9towv26Ksx1LlZiU1LHkz7RlpFt5Rrm6YcsfbjnVCXNRWpkmuzXug5QiJETxSYckJydOfqxj6evVHvLITKO7ozWwFWSh_D__ZQQhzEyRrbqXkJCZw35oLv6uDtwcCwWbWulpKS09kGJqy5uOYOCO3F_6Wl2yG6ZU_Y9cMIu4Bzql4YaZDpfR80yomZh0O2HWMYeWVg" />
-                Google Review • Screw Wood, Bangalore
-              </div>
             </div>
+
             {/* Card 4 */}
-            <div className="w-[450px] bg-white rounded-3xl p-8 border border-slate-100 shadow-sm flex flex-col">
-              <div className="flex justify-between items-start mb-6">
-                <div className="flex text-yellow-400 text-lg">★★★★★</div>
-                <img
-                  alt="Google"
-                  className="w-6 h-6"
-                  src="/images/indian_professional_woman_1.png"
-                />
-              </div>
-              <p className="text-slate-600 text-lg mb-8 italic flex-grow">"I am Nithil, from Marathahalli. I completed my home project with Screw Wood. They provide good service and supportive staff. I am very happy."</p>
-              <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
-                <div className="w-12 h-12 rounded-full bg-cyan-600 flex items-center justify-center text-white font-bold text-lg">NB</div>
-                <div className="flex-grow">
-                  <h5 className="text-slate-900 font-bold">Nithil Bathli</h5>
-                  <p className="text-slate-400 text-xs uppercase font-bold">Happy Client</p>
+            <div className="w-[310px] sm:w-[440px] bg-white rounded-[32px] p-6 sm:p-8 border border-slate-200/80 shadow-md flex flex-col justify-between shrink-0 hover:shadow-xl hover:-translate-y-1 transition-all">
+              <div>
+                <div className="flex justify-between items-center mb-5">
+                  <div className="flex text-[#f2bd19] text-base space-x-0.5 font-bold">
+                    ★★★★★
+                  </div>
+                  <span className="bg-emerald-50 text-emerald-700 text-[10px] font-black uppercase px-2.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1">
+                    ✓ Verified Owner
+                  </span>
                 </div>
+                <p className="text-slate-700 text-sm sm:text-base mb-6 italic leading-relaxed">
+                  "I completed my home project with Screw Wood. They provide outstanding customer service, transparent material wallets, and supportive site engineers."
+                </p>
               </div>
-              <div className="mt-4 flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase">
-                <img alt="Google" className="w-4 h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg_xkql96U6o2JB1YYdFR5IYCjecRx7ETRGZr6itw2blu15SMZY7CYf5wnFZNkbBK-R8xYwR9towv26Ksx1LlZiU1LHkz7RlpFt5Rrm6YcsfbjnVCXNRWpkmuzXug5QiJETxSYckJydOfqxj6evVHvLITKO7ozWwFWSh_D__ZQQhzEyRrbqXkJCZw35oLv6uDtwcCwWbWulpKS09kGJqy5uOYOCO3F_6Wl2yG6ZU_Y9cMIu4Bzql4YaZDpfR80yomZh0O2HWMYeWVg" />
-                Google Review • Screw Wood, Bangalore
-              </div>
-            </div>
-            {/* Clone set for seamless infinite scroll */}
-            <div className="w-[450px] bg-white rounded-3xl p-8 border border-slate-100 shadow-sm flex flex-col">
-              <div className="flex justify-between items-start mb-6">
-                <div className="flex text-yellow-400 text-lg">★★★★★</div>
-                <img
-                  alt="Google"
-                  className="w-6 h-6"
-                  src="/images/indian_professional_man_1.png"
-                />
-              </div>
-              <p className="text-slate-600 text-lg mb-8 italic flex-grow">"I had my home construction done by Screw Wood. Here they provide best service and quality that every company can't provide."</p>
-              <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
-                <div className="w-12 h-12 rounded-full bg-sky-500 flex items-center justify-center text-white font-bold text-lg">MR</div>
-                <div className="flex-grow">
-                  <h5 className="text-slate-900 font-bold">Mohammed Rehan</h5>
-                  <p className="text-slate-400 text-xs uppercase font-bold">Happy Client</p>
+
+              <div>
+                <div className="flex items-center gap-3.5 border-t border-slate-100 pt-5">
+                  <img
+                    alt="Nithil Bathli"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-[#f2bd19] shadow-sm shrink-0"
+                    src="/images/indian_professional_woman_1.png"
+                  />
+                  <div className="flex-grow min-w-0">
+                    <h5 className="text-slate-900 font-extrabold text-sm truncate">Nithil Bathli</h5>
+                    <p className="text-slate-500 text-[11px] font-medium truncate">Owner • Villa in Marathahalli</p>
+                  </div>
                 </div>
-              </div>
-              <div className="mt-4 flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase">
-                <img alt="Google" className="w-4 h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg_xkql96U6o2JB1YYdFR5IYCjecRx7ETRGZr6itw2blu15SMZY7CYf5wnFZNkbBK-R8xYwR9towv26Ksx1LlZiU1LHkz7RlpFt5Rrm6YcsfbjnVCXNRWpkmuzXug5QiJETxSYckJydOfqxj6evVHvLITKO7ozWwFWSh_D__ZQQhzEyRrbqXkJCZw35oLv6uDtwcCwWbWulpKS09kGJqy5uOYOCO3F_6Wl2yG6ZU_Y9cMIu4Bzql4YaZDpfR80yomZh0O2HWMYeWVg" />
-                Google Review • Screw Wood, Bangalore
-              </div>
-            </div>
-            <div className="w-[450px] bg-white rounded-3xl p-8 border border-slate-100 shadow-sm flex flex-col">
-              <div className="flex justify-between items-start mb-6">
-                <div className="flex text-yellow-400 text-lg">★★★★★</div>
-                <img
-                  alt="Google"
-                  className="w-6 h-6"
-                  src="/images/indian_professional_woman_1.png"
-                />
-              </div>
-              <p className="text-slate-600 text-lg mb-8 italic flex-grow">"I recently used Screw Wood and found this was the best choice. Their team provided the best quality of work."</p>
-              <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
-                <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-lg">JS</div>
-                <div className="flex-grow">
-                  <h5 className="text-slate-900 font-bold">Jhansi Sony</h5>
-                  <p className="text-slate-400 text-xs uppercase font-bold">Happy Client</p>
+                <div className="mt-3 flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase">
+                  <span>Google Review</span> • <span className="text-[#f2bd19] font-black">5.0 ★</span>
                 </div>
-              </div>
-              <div className="mt-4 flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase">
-                <img alt="Google" className="w-4 h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg_xkql96U6o2JB1YYdFR5IYCjecRx7ETRGZr6itw2blu15SMZY7CYf5wnFZNkbBK-R8xYwR9towv26Ksx1LlZiU1LHkz7RlpFt5Rrm6YcsfbjnVCXNRWpkmuzXug5QiJETxSYckJydOfqxj6evVHvLITKO7ozWwFWSh_D__ZQQhzEyRrbqXkJCZw35oLv6uDtwcCwWbWulpKS09kGJqy5uOYOCO3F_6Wl2yG6ZU_Y9cMIu4Bzql4YaZDpfR80yomZh0O2HWMYeWVg" />
-                Google Review • Screw Wood, Bangalore
               </div>
             </div>
           </div>
         </div>
-        <div className="max-w-fit mx-auto px-10 py-3 bg-white rounded-full shadow-lg border border-slate-100 flex flex-wrap items-center justify-center gap-4 text-sm font-bold text-slate-600">
-          <div className="flex items-center gap-2">
-            <img alt="Google" className="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg_xkql96U6o2JB1YYdFR5IYCjecRx7ETRGZr6itw2blu15SMZY7CYf5wnFZNkbBK-R8xYwR9towv26Ksx1LlZiU1LHkz7RlpFt5Rrm6YcsfbjnVCXNRWpkmuzXug5QiJETxSYckJydOfqxj6evVHvLITKO7ozWwFWSh_D__ZQQhzEyRrbqXkJCZw35oLv6uDtwcCwWbWulpKS09kGJqy5uOYOCO3F_6Wl2yG6ZU_Y9cMIu4Bzql4YaZDpfR80yomZh0O2HWMYeWVg" />
-            <span className="text-slate-900 text-lg">5.0 / 5.0</span>
+
+        {/* Rating Summary Footer Pill */}
+        <div className="max-w-fit mx-auto px-6 py-3.5 bg-white rounded-full shadow-lg border border-slate-200 flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm font-bold text-slate-700">
+          <div className="flex items-center gap-1.5">
+            <span className="text-slate-900 text-base font-black">5.0 / 5.0</span>
+            <div className="flex text-[#f2bd19] text-sm font-bold">★★★★★</div>
           </div>
-          <div className="flex text-yellow-400 text-base">★★★★★</div>
-          <span className="text-slate-300">|</span>
-          <span className="">121 Google Reviews</span>
-          <span className="text-slate-300">|</span>
-          <div className="flex items-center gap-1">
-            Jayanagar, Bangalore
-            <svg className="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path>
-            </svg>
-          </div>
+          <span className="text-slate-300 hidden sm:inline">|</span>
+          <span className="text-slate-900 font-extrabold">121 Verified Google Reviews</span>
+          <span className="text-slate-300 hidden sm:inline">|</span>
+          <span className="text-slate-500 font-medium">Screw Wood, Bangalore</span>
         </div>
       </section>
     </>

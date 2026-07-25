@@ -1,77 +1,97 @@
+'use client';
+
+import React from 'react';
+import { openCallModal } from '@/components/CallModal';
+
+interface WhyChooseItem {
+  id: string;
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const WHY_CHOOSE_ITEMS: WhyChooseItem[] = [
+  {
+    id: '1',
+    icon: 'local_offer',
+    title: 'Made to order',
+    description: 'We create personalised spaces that cater to your every requirement.',
+  },
+  {
+    id: '2',
+    icon: 'percent',
+    title: 'Lowest Prices Guaranteed',
+    description: 'We provide the best possible solutions that suit your finances.',
+  },
+  {
+    id: '3',
+    icon: 'assignment_turned_in',
+    title: 'Quality Checks At Every Step',
+    description: 'We guarantee thorough quality checks till project completion',
+  },
+  {
+    id: '4',
+    icon: 'timer',
+    title: 'Timely Delivery Assurance',
+    description: 'We proactively work on commitments to maintain our benchmark of ontime delivery',
+  },
+  {
+    id: '5',
+    icon: 'verified_user',
+    title: '11-Years Warranty',
+    description: 'We invigorate client relationships by offering warranties that last a decade.',
+  },
+];
+
 export default function WhyChooseUs() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 text-center mb-16">
-        <div className="flex items-center justify-center gap-2 mb-4">
-          <div className="w-10 h-[2px] bg-primary-orange"></div>
-          <span className="text-primary-orange font-bold uppercase tracking-widest text-xs">Our Commitment</span>
-        </div>
-        <h2 className="text-5xl font-extrabold text-dark-charcoal">What Makes Us Different</h2>
-      </div>
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div className="flex flex-col items-center text-center group">
-          <div className="relative mb-6">
-            <img
-              alt="Affordable"
-              className="rounded-full w-48 h-48 object-cover transition-transform duration-700 group-hover:scale-110 group-hover:shadow-2xl"
-              src="/images/bangalore_modern_interior.png"
-            />
-            <div className="absolute bottom-2 left-2 bg-primary-orange p-3 rounded-full flex items-center justify-center">
-              <span className="material-symbols-outlined text-white text-xl">savings</span>
-            </div>
+    <section className="py-16 md:py-24 bg-white font-sans" id="why-choose-us">
+      <div className="max-w-7xl mx-auto px-4 space-y-10">
+        {/* Header with Title, Subtitle, and Top Right Button */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+          <div className="space-y-2 max-w-3xl">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
+              Why Choose Us
+            </h2>
+            <p className="text-slate-600 text-sm sm:text-base md:text-lg font-medium leading-relaxed">
+              With us, you experience the power of ideas, design and craftsmanship come alive.
+            </p>
           </div>
-          <h4 className="text-xl font-bold mb-4">Affordable Bangalore Realty</h4>
-          <p className="text-gray-500 text-sm">We prioritize communication and simplicity, making your property journey smooth in the fast-paced IT hub.</p>
+
+          <button
+            type="button"
+            onClick={openCallModal}
+            className="bg-[#f2bd19] hover:bg-amber-500 text-slate-900 font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-2xl shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer shrink-0 w-full sm:w-auto text-center"
+          >
+            Book Consultation
+          </button>
         </div>
-        <div className="flex flex-col items-center text-center group">
-          <div className="relative mb-6">
-            <img
-              alt="Expertise"
-              className="rounded-full w-48 h-48 object-cover transition-transform duration-700 group-hover:scale-110 group-hover:shadow-2xl"
-              src="/images/bangalore_architect_planning.png"
-            />
-            <div className="absolute bottom-2 left-2 bg-primary-orange p-3 rounded-full flex items-center justify-center">
-              <span className="material-symbols-outlined text-white text-xl">workspace_premium</span>
+
+        {/* 5 Cards Row (Swipeable Carousel on Mobile / 5-Col Grid on Desktop) */}
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-6 md:pb-0 lg:grid lg:grid-cols-5 md:overflow-visible">
+          {WHY_CHOOSE_ITEMS.map((item) => (
+            <div
+              key={item.id}
+              className="min-w-[240px] sm:min-w-[270px] lg:min-w-0 snap-center bg-slate-50/90 rounded-3xl p-6 border border-slate-100/80 shadow-xs flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300 group shrink-0 lg:shrink"
+            >
+              <div className="space-y-5">
+                {/* Icon Container */}
+                <div className="w-12 h-12 rounded-2xl bg-blue-50/80 text-blue-600 flex items-center justify-center group-hover:bg-[#f2bd19]/20 group-hover:text-slate-900 transition-colors">
+                  <span className="material-symbols-outlined text-2xl">{item.icon}</span>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="text-base sm:text-lg font-extrabold text-slate-900 leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="text-slate-500 text-xs leading-relaxed font-normal">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-          <h4 className="text-xl font-bold mb-4">Local Expertise You Can Trust</h4>
-          <p className="text-gray-500 text-sm">Our experience with BDA and BBMP approvals guides you through every step with knowledge and care.</p>
+          ))}
         </div>
-        <div className="flex flex-col items-center text-center group">
-          <div className="relative mb-6">
-            <img
-              alt="Process"
-              className="rounded-full w-48 h-48 object-cover transition-transform duration-700 group-hover:scale-110 group-hover:shadow-2xl"
-              src="/images/bangalore_house_construction.png"
-            />
-            <div className="absolute bottom-2 left-2 bg-primary-orange p-3 rounded-full flex items-center justify-center">
-              <span className="material-symbols-outlined text-white text-xl">autorenew</span>
-            </div>
-          </div>
-          <h4 className="text-xl font-bold mb-4">Hassle-Free Process</h4>
-          <p className="text-gray-500 text-sm">We make your property journey smooth and stress-free through every step of construction.</p>
-        </div>
-        <div className="flex flex-col items-center text-center group">
-          <div className="relative mb-6">
-            <img
-              alt="Value"
-              className="rounded-full w-48 h-48 object-cover transition-transform duration-700 group-hover:scale-110 group-hover:shadow-2xl"
-              src="/images/bangalore_hero_building.png"
-            />
-            <div className="absolute bottom-2 left-2 bg-primary-orange p-3 rounded-full flex items-center justify-center">
-              <span className="material-symbols-outlined text-white text-xl">trending_up</span>
-            </div>
-          </div>
-          <h4 className="text-xl font-bold mb-4">Long-Term Value</h4>
-          <p className="text-gray-500 text-sm">Every project is built with quality and vision, designed to last for generations to come.</p>
-        </div>
-      </div>
-      <div className="absolute bottom-0 left-0 w-full opacity-5 pointer-events-none">
-        <img
-          alt="Skyline"
-          className="w-full"
-          src="/images/bangalore_commercial_complex.png"
-        />
       </div>
     </section>
   );

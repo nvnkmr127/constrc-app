@@ -80,7 +80,7 @@ export default function Stats() {
                 </div>
               </div>
               <div className="flex flex-col justify-center bg-orange-50 p-8 rounded-3xl border border-orange-100 relative group transition-all duration-300 hover:shadow-md">
-                <span className="text-6xl text-primary-orange/20 absolute top-2 right-4 font-serif">"</span>
+                <span className="text-6xl text-primary-orange/20 absolute top-2 right-4">"</span>
                 <p className="text-dark-charcoal italic font-medium leading-relaxed relative z-10 text-sm">
                   "Our commitment to excellence drives every brick we lay across Bangalore."
                 </p>
