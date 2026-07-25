@@ -418,6 +418,27 @@ export default function AdminDashboardPage() {
             ⚙️ Technical SEO &amp; Vitals
           </Link>
 
+          <Link
+            href="/admin/dashboard/ai"
+            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
+          >
+            🤖 AI Search &amp; llms.txt
+          </Link>
+
+          <Link
+            href="/admin/dashboard/audits"
+            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
+          >
+            🚨 Health Audits &amp; Drift
+          </Link>
+
+          <Link
+            href="/admin/dashboard/media"
+            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
+          >
+            🖼️ Image SEO &amp; OG Cards
+          </Link>
+
           <button
             onClick={() => setActiveTab('seo')}
             className={`pb-4 px-4 text-xs font-black uppercase tracking-wider transition-all border-b-2 cursor-pointer whitespace-nowrap ${
