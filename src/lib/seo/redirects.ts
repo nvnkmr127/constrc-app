@@ -139,6 +139,14 @@ export function detectRedirectChainOrLoop(
 
     if (nextHop) {
       const nextDest = nextHop.destination.trim().replace(/\/$/, '') || '/';
+      if (visited.has(nextDest) || nextDest === normSource) {
+        return {
+          isValid: false,
+          isLoop: true,
+          error: `Redirect loop detected: "${source}" -> "${destination}" -> "${nextHop.destination}" forms a circular loop.`,
+        };
+      }
+
       return {
         isValid: false,
         isChain: true,

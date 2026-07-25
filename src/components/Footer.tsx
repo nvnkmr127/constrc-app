@@ -284,10 +284,10 @@ export default function Footer() {
                       EMAIL ADDRESS
                     </span>
                     <a
-                      href="mailto:salman@scewwood.in"
+                      href="mailto:reachus@screwwood.in"
                       className="text-xs font-bold text-[#f2bd19] group-hover:underline transition-colors block truncate"
                     >
-                      salman@scewwood.in
+                      reachus@screwwood.in
                     </a>
                   </div>
                 </li>

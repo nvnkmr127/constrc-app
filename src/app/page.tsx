@@ -24,15 +24,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function Home() {
   return (
     <>
-      <JsonLd
-        data={[
-          localBusinessSchema({
-            address: "38th Cross Rd, 1751, 15th Main Rd, HBR Layout 5th Block, Bengaluru, Karnataka 560043",
-            email: "salman@scewwood.in",
-            phone: "+91 9014303409",
-          }),
-        ]}
-      />
       <Header />
       <main>
         <Hero />

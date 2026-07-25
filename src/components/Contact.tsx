@@ -91,8 +91,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-[10px] uppercase font-extrabold text-slate-400">Email Support</p>
-                  <a href="mailto:salman@scewwood.in" className="font-bold text-slate-200 hover:text-[#f2bd19] transition-colors">
-                    salman@scewwood.in
+                  <a href="mailto:reachus@screwwood.in" className="font-bold text-slate-200 hover:text-[#f2bd19] transition-colors">
+                    reachus@screwwood.in
                   </a>
                 </div>
               </div>
