@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏢 Screw Wood - Construction & Interior Web Application
 
-## Getting Started
+High-performance Next.js application for Screw Wood (HBR Layout, Bengaluru), featuring an interactive AI Construction Calculator, local SEO engine, lead capture system, and a Yoast-style admin dashboard.
+
+---
+
+## ⚡ Technology Stack
+
+| Layer | Technology | Description |
+| :--- | :--- | :--- |
+| **Framework** | **Next.js 16 (App Router)** | React 19 framework with Turbopack & SSG/ISR static rendering |
+| **Language** | **TypeScript 5** | Strict type safety for data models and Server Actions |
+| **Styling** | **Tailwind CSS v4** | Modern utility-first CSS framework |
+| **Database** | **Supabase (PostgreSQL)** | Cloud database for `leads` and `blogs` tables |
+| **Backend** | **Next.js Server Actions** | Native server execution for form submissions and admin controls |
+| **Notifications** | **Resend Email API** | Automated email alert dispatching for sales leads |
+| **SEO Suite** | **Yoast-Style SEO Engine** | Live Google SERP simulator, focus keyword analyzer, JSON-LD schemas |
+
+---
+
+## 🚀 Getting Started
 
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔑 Admin Dashboard & Yoast SEO Suite
 
-## Learn More
+Access the Admin Dashboard at [http://localhost:3000/admin](http://localhost:3000/admin)
 
-To learn more about Next.js, take a look at the following resources:
+- **Default Passcode**: `screwwood2025`
+- **Features**:
+  1. 📥 **Leads Inbox**: View, filter, and export customer leads to CSV.
+  2. ✍️ **Blog Writer Studio**: Publish blog posts to Supabase with real-time Yoast SEO scoring.
+  3. 🎯 **Yoast Page SEO Manager**: Edit Google Title Tags and Meta Descriptions with live SERP preview.
+  4. 📍 **Local SEO Directory**: Preview geo-targeted neighborhood landing pages (`/[slug]`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📖 Complete Documentation
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 📄 [`SEO_SYSTEM.md`](file:///Users/naveenadicharla/Documents/constrc-app/SEO_SYSTEM.md) - Full technical documentation for the SEO Engine, Yoast Suite, and Schema.org markup.
+- 📄 [`supabase/schema.sql`](file:///Users/naveenadicharla/Documents/constrc-app/supabase/schema.sql) - Supabase SQL setup script.

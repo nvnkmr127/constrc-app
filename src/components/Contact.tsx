@@ -2,18 +2,42 @@
 
 import React, { useState } from 'react';
 import { openCallModal } from '@/components/CallModal';
+import { submitLeadAction } from '@/app/actions/leadActions';
 
 export default function Contact() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (name.trim() && phone.trim()) {
-      setIsSubmitted(true);
+    if (!name.trim() || !phone.trim()) return;
+
+    setIsSubmitting(true);
+    setErrorMsg('');
+
+    try {
+      const res = await submitLeadAction({
+        name,
+        phone,
+        email,
+        message,
+        sourcePage: 'Contact Form',
+      });
+
+      if (res.success) {
+        setIsSubmitted(true);
+      } else {
+        setErrorMsg(res.error || 'Failed to submit form. Please try calling us directly.');
+      }
+    } catch (err: any) {
+      setErrorMsg('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -186,11 +210,18 @@ export default function Contact() {
                     />
                   </div>
 
+                  {errorMsg && (
+                    <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs font-semibold rounded-xl">
+                      ⚠️ {errorMsg}
+                    </div>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full sm:w-auto bg-[#f2bd19] hover:bg-amber-500 text-slate-900 font-extrabold text-xs uppercase tracking-wider px-10 py-4 rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+                    disabled={isSubmitting}
+                    className="w-full sm:w-auto bg-[#f2bd19] hover:bg-amber-500 disabled:opacity-50 text-slate-900 font-extrabold text-xs uppercase tracking-wider px-10 py-4 rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    CONTACT NOW{' '}
+                    {isSubmitting ? 'SENDING...' : 'CONTACT NOW'}{' '}
                     <span className="bg-slate-900 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-bold">
                       →
                     </span>

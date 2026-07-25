@@ -1,63 +1,53 @@
-import { notFound } from 'next/navigation'
-import type { Metadata } from 'next'
-import Header from '@/components/Header'
-import PageHero from '@/components/PageHero'
-import Footer from '@/components/Footer'
-import { JsonLd } from '@/components/seo/JsonLd'
-import { blogPostingSchema, breadcrumbSchema } from '@/lib/schema'
+import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import Header from '@/components/Header';
+import PageHero from '@/components/PageHero';
+import Footer from '@/components/Footer';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { blogPostingSchema, breadcrumbSchema } from '@/lib/schema';
+import { getPostBySlug, getPosts } from '@/lib/blogService';
 
-type Props = { params: Promise<{ slug: string }> }
-
-const posts: Record<string, { title: string; dateStr: string; image: string; content: string }> = {
-  'sustainable-building-materials-bangalore': {
-    title: 'Top Sustainable Building Materials for Homes in Bangalore',
-    dateStr: '15 October 2024',
-    image: '/images/bangalore_modern_interior.png',
-    content: 'Building a sustainable home in Bangalore involves choosing materials that reduce thermal heat gain, lower power consumption, and provide longevity. High-performance AAC blocks, solar-reflective roof coatings, and low-VOC paints are standard choices for eco-conscious homeowners.',
-  },
-  'bbmp-building-approval-guide-2025': {
-    title: 'Complete Guide to BBMP Plan Approvals & Regulations',
-    dateStr: '28 November 2024',
-    image: '/images/bangalore_commercial_complex.png',
-    content: 'BBMP building plan sanctions require strict adherence to setback rules, FAR ratios, and rainwater harvesting compliance. Working with certified structural engineers ensures seamless sanctioning without costly delays.',
-  },
-  'cost-effective-interior-design-tips': {
-    title: 'Cost-Effective Commercial & Residential Interior Design Tips',
-    dateStr: '10 January 2025',
-    image: '/images/bangalore_hero_building.png',
-    content: 'Optimizing interior aesthetics does not require lavish spending. Modular cabinetry, strategic accent lighting, and durable laminate finishes create high-end visual appeal at fraction of the cost.',
-  },
-}
+type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
-  return Object.keys(posts).map((slug) => ({ slug }))
+  const posts = await getPosts();
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
-  const post = posts[slug]
-  if (!post) return {}
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+  if (!post) return {};
+
   return {
-    title: post.title,
+    title: `${post.title} | Screw Wood Insights`,
+    description: post.excerpt,
     alternates: { canonical: `/news/${slug}` },
     openGraph: {
       type: 'article',
       title: post.title,
+      description: post.excerpt,
       images: [post.image],
     },
-  }
+  };
 }
 
 export default async function PostPage({ params }: Props) {
-  const { slug } = await params
-  const post = posts[slug]
-  if (!post) notFound()
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+  if (!post) notFound();
 
   return (
     <>
       <JsonLd
         data={[
-          blogPostingSchema(post),
+          blogPostingSchema({
+            title: post.title,
+            publishedDate: post.dateStr,
+            featuredImage: { url: post.image },
+            slug: post.slug,
+            author: post.author,
+          }),
           breadcrumbSchema([
             { name: 'Home', path: '/' },
             { name: 'News', path: '/news' },
@@ -66,20 +56,35 @@ export default async function PostPage({ params }: Props) {
         ]}
       />
       <Header />
-      <main>
+      <main className="font-sans">
         <PageHero title={post.title} image={post.image} />
-        <article className="py-20">
+        <article className="py-20 bg-white">
           <div className="max-w-3xl mx-auto px-4">
-            <p className="text-primary-orange font-bold uppercase tracking-widest text-xs mb-8">
-              {post.dateStr}
-            </p>
-            <div className="prose max-w-none text-slate-700 leading-relaxed text-lg">
-              <p>{post.content}</p>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="bg-[#f2bd19] text-slate-900 text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider">
+                {post.category || 'Article'}
+              </span>
+              <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">
+                {post.dateStr}
+              </span>
+            </div>
+
+            <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed text-lg space-y-6">
+              {post.content.split('\n\n').map((paragraph, idx) => {
+                if (paragraph.startsWith('### ')) {
+                  return (
+                    <h3 key={idx} className="text-2xl font-black text-slate-900 pt-4 mb-2">
+                      {paragraph.replace('### ', '')}
+                    </h3>
+                  );
+                }
+                return <p key={idx}>{paragraph}</p>;
+              })}
             </div>
           </div>
         </article>
       </main>
       <Footer />
     </>
-  )
+  );
 }

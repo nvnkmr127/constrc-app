@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { submitLeadAction } from '@/app/actions/leadActions';
 
 export function openCallModal() {
   if (typeof window !== 'undefined') {
@@ -13,12 +14,15 @@ export default function CallModal() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
     const handleOpen = () => {
       setIsOpen(true);
       setIsSubmitted(false);
+      setErrorMsg('');
     };
 
     window.addEventListener('open-call-modal', handleOpen);
@@ -27,10 +31,30 @@ export default function CallModal() {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (phone.trim()) {
-      setIsSubmitted(true);
+    if (!name.trim() || !phone.trim()) return;
+
+    setIsSubmitting(true);
+    setErrorMsg('');
+
+    try {
+      const res = await submitLeadAction({
+        name,
+        phone,
+        message: address ? `Plot Location / Address: ${address}` : undefined,
+        sourcePage: 'Call Modal Consultation',
+      });
+
+      if (res.success) {
+        setIsSubmitted(true);
+      } else {
+        setErrorMsg(res.error || 'Submission failed. Please call +91 9014303409');
+      }
+    } catch (err) {
+      setErrorMsg('Network error. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -141,11 +165,18 @@ export default function CallModal() {
                   />
                 </div>
 
+                {errorMsg && (
+                  <div className="p-2.5 bg-red-50 border border-red-200 text-red-600 text-xs font-semibold rounded-xl">
+                    ⚠️ {errorMsg}
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-primary-orange hover:bg-orange-600 text-white font-extrabold text-sm tracking-wide py-3.5 rounded-xl shadow-md transition-all uppercase cursor-pointer mt-1"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary-orange hover:bg-orange-600 disabled:opacity-50 text-white font-extrabold text-sm tracking-wide py-3.5 rounded-xl shadow-md transition-all uppercase cursor-pointer mt-1"
                 >
-                  Continue
+                  {isSubmitting ? 'SUBMITTING...' : 'CONTINUE'}
                 </button>
               </form>
 
