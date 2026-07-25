@@ -390,6 +390,13 @@ export default function AdminDashboardPage() {
             🧱 Schema.org Studio
           </Link>
 
+          <Link
+            href="/admin/dashboard/tracking"
+            className="pb-4 px-4 text-xs font-black uppercase tracking-wider text-[#f2bd19] hover:text-white transition-all border-b-2 border-transparent hover:border-[#f2bd19] cursor-pointer whitespace-nowrap"
+          >
+            📊 Analytics &amp; CAPI
+          </Link>
+
           <button
             onClick={() => setActiveTab('seo')}
             className={`pb-4 px-4 text-xs font-black uppercase tracking-wider transition-all border-b-2 cursor-pointer whitespace-nowrap ${

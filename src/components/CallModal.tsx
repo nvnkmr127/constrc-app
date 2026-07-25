@@ -48,6 +48,16 @@ export default function CallModal() {
 
       if (res.success) {
         setIsSubmitted(true);
+        try {
+          const { trackLeadSubmit } = await import('@/lib/track');
+          trackLeadSubmit({
+            name,
+            phone,
+            sourcePage: 'Call Modal Consultation',
+          });
+        } catch {
+          // Ignore analytics dispatch error
+        }
       } else {
         setErrorMsg(res.error || 'Submission failed. Please call +91 9014303409');
       }

@@ -3,7 +3,10 @@ import "./globals.css";
 import { resolveSeo } from "@/lib/seo/resolve";
 import CallModal from "@/components/CallModal";
 import JsonLd from "@/components/JsonLd";
+import Analytics from "@/components/Analytics";
+import ConsentBanner from "@/components/ConsentBanner";
 import { getSchemasForPath } from "@/lib/seo/schema-resolution";
+import { getPublicTrackingConfig } from "@/app/actions/tracking";
 
 export async function generateMetadata(): Promise<Metadata> {
   const baseSeo = await resolveSeo('/');
@@ -18,7 +21,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const globalSchemas = await getSchemasForPath('/');
+  const [globalSchemas, trackingRes] = await Promise.all([
+    getSchemasForPath('/'),
+    getPublicTrackingConfig(),
+  ]);
+
+  const publicTrackingConfig = trackingRes.ok ? trackingRes.data || null : null;
 
   return (
     <html lang="en" className="h-full antialiased font-sans">
@@ -28,10 +36,12 @@ export default async function RootLayout({
           rel="stylesheet"
         />
         <JsonLd data={globalSchemas} />
+        <Analytics config={publicTrackingConfig} />
       </head>
       <body className="min-h-full flex flex-col bg-white text-slate-800 font-sans">
         {children}
         <CallModal />
+        <ConsentBanner />
       </body>
     </html>
   );
