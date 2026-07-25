@@ -1,6 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import { analyzeSeoContent } from '@/lib/seo/analyze';
+import { suggestInternalLinks, InternalLinkSuggestion } from '@/lib/seo/internal-links';
 
 export interface YoastSeoState {
   seoTitle: string;
@@ -18,14 +20,18 @@ interface YoastSeoAnalyzerProps {
   seoState: YoastSeoState;
   onChange: (updatedState: Partial<YoastSeoState>) => void;
   siteDomain?: string;
+  extraPublishedPosts?: Array<{ title: string; path: string }>;
 }
 
 export default function YoastSeoAnalyzer({
   seoState,
   onChange,
-  siteDomain = 'https://screwwood.com',
+  siteDomain = 'https://www.screwwood.in',
+  extraPublishedPosts = [],
 }: YoastSeoAnalyzerProps) {
   const [previewDevice, setPreviewDevice] = useState<'desktop' | 'mobile'>('desktop');
+  const [activeTab, setActiveTab] = useState<'checklist' | 'readability' | 'internalLinks'>('checklist');
+  const [copiedSnippet, setCopiedSnippet] = useState<string | null>(null);
 
   const {
     seoTitle,
@@ -39,71 +45,57 @@ export default function YoastSeoAnalyzer({
     robotsIndex,
   } = seoState;
 
-  // Real-time SEO Analysis Math
-  const titleLength = seoTitle.length;
-  const isTitleIdeal = titleLength >= 45 && titleLength <= 60;
-  const isTitleTooLong = titleLength > 60;
-  const isTitleTooShort = titleLength < 45;
+  // Real-time Analysis Engine calculation
+  const analysis = useMemo(() => {
+    return analyzeSeoContent({
+      title: seoTitle,
+      slug,
+      content,
+      focusKeyword,
+      metaDesc: seoDescription,
+    });
+  }, [seoTitle, slug, content, focusKeyword, seoDescription]);
 
-  const descLength = seoDescription.length;
-  const isDescIdeal = descLength >= 120 && descLength <= 160;
-  const isDescTooLong = descLength > 160;
-  const isDescTooShort = descLength < 120;
-
-  const keywordLower = focusKeyword.toLowerCase().trim();
-  const titleHasKeyword = keywordLower ? seoTitle.toLowerCase().includes(keywordLower) : false;
-  const descHasKeyword = keywordLower ? seoDescription.toLowerCase().includes(keywordLower) : false;
-  const slugHasKeyword = keywordLower ? slug.toLowerCase().includes(keywordLower) : false;
-
-  // Content Keyword Density Calculation
-  let contentKeywordCount = 0;
-  if (keywordLower && content) {
-    const regex = new RegExp(keywordLower.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
-    const matches = content.match(regex);
-    contentKeywordCount = matches ? matches.length : 0;
-  }
-
-  // Calculate Overall Yoast Health Score (0 to 100)
-  let score = 0;
-  if (isTitleIdeal) score += 25;
-  else if (titleLength > 20) score += 15;
-
-  if (isDescIdeal) score += 25;
-  else if (descLength > 50) score += 15;
-
-  if (titleHasKeyword) score += 15;
-  if (descHasKeyword) score += 15;
-  if (slugHasKeyword) score += 10;
-  if (contentKeywordCount > 0) score += 10;
-
-  const scoreBadgeColor =
-    score >= 80 ? 'bg-emerald-500 text-white' : score >= 50 ? 'bg-amber-500 text-slate-900' : 'bg-red-500 text-white';
-
-  const scoreLabel = score >= 80 ? 'Good (SEO Ready)' : score >= 50 ? 'Needs Improvement' : 'Poor';
+  // Real-time Internal Link Suggestions
+  const linkSuggestions = useMemo(() => {
+    return suggestInternalLinks(content, extraPublishedPosts);
+  }, [content, extraPublishedPosts]);
 
   const targetUrl = `${siteDomain.replace(/\/$/, '')}/${slug ? (slug.startsWith('/') ? slug.slice(1) : slug) : ''}`;
 
+  const titleLength = seoTitle.length;
+  const isTitleIdeal = titleLength >= 45 && titleLength <= 60;
+
+  const descLength = seoDescription.length;
+  const isDescIdeal = descLength >= 120 && descLength <= 160;
+
+  const copyToClipboard = (snippet: string) => {
+    navigator.clipboard.writeText(snippet);
+    setCopiedSnippet(snippet);
+    setTimeout(() => setCopiedSnippet(null), 3000);
+  };
+
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-6 text-slate-100 font-sans shadow-xl">
-      {/* Top Header with Yoast Score Badge */}
-      <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+      {/* Header with Score Badge */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-[#f2bd19] text-slate-900 flex items-center justify-center font-black text-xl shadow-md">
             🎯
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-lg font-black text-white">Yoast SEO Live Analyzer</h3>
-              <span className={`text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full ${scoreBadgeColor}`}>
-                {score}/100 • {scoreLabel}
+              <h3 className="text-lg font-black text-white">Yoast SEO &amp; Readability Analyzer</h3>
+              <span className={`text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full ${analysis.scoreBadgeColor}`}>
+                {analysis.score}/100 • {analysis.scoreLabel}
               </span>
             </div>
-            <p className="text-xs text-slate-400">Live Google SERP simulator &amp; metadata optimizer</p>
+            <p className="text-xs text-slate-400">Real-time keyword placement, readability &amp; internal link engine</p>
           </div>
         </div>
 
         {/* Device Preview Toggle */}
-        <div className="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800 text-xs font-extrabold">
+        <div className="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800 text-xs font-extrabold self-start sm:self-auto">
           <button
             type="button"
             onClick={() => setPreviewDevice('desktop')}
@@ -135,7 +127,6 @@ export default function YoastSeoAnalyzer({
             previewDevice === 'mobile' ? 'max-w-sm mx-auto' : 'w-full'
           }`}
         >
-          {/* Site Favicon & Breadcrumb URL */}
           <div className="flex items-center gap-2 text-xs mb-1">
             <div className="w-5 h-5 rounded-full bg-slate-900 text-[#f2bd19] flex items-center justify-center font-black text-[10px]">
               SW
@@ -146,12 +137,10 @@ export default function YoastSeoAnalyzer({
             </div>
           </div>
 
-          {/* Google Title Link */}
           <h4 className="text-[#1a0dab] hover:underline font-normal text-lg leading-snug cursor-pointer truncate">
             {seoTitle || 'Page Title Placeholder - Screw Wood Construction'}
           </h4>
 
-          {/* Meta Description Text */}
           <p className="text-[#4d5156] text-xs leading-relaxed mt-1 line-clamp-2">
             {seoDescription || 'Add a compelling meta description to improve your click-through rate on Google search results...'}
           </p>
@@ -168,7 +157,7 @@ export default function YoastSeoAnalyzer({
             </label>
             <span
               className={`text-[10px] font-bold ${
-                isTitleIdeal ? 'text-emerald-400' : isTitleTooLong ? 'text-red-400' : 'text-amber-400'
+                isTitleIdeal ? 'text-emerald-400' : titleLength > 60 ? 'text-red-400' : 'text-amber-400'
               }`}
             >
               {titleLength} / 60 chars
@@ -181,14 +170,6 @@ export default function YoastSeoAnalyzer({
             placeholder="e.g. Turnkey House Construction Services Bangalore | Screw Wood"
             className="w-full bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-xs font-bold text-white focus:outline-none focus:border-[#f2bd19]"
           />
-          <div className="w-full h-1.5 bg-slate-800 rounded-full mt-2 overflow-hidden">
-            <div
-              className={`h-full transition-all ${
-                isTitleIdeal ? 'bg-emerald-500' : isTitleTooLong ? 'bg-red-500' : 'bg-amber-500'
-              }`}
-              style={{ width: `${Math.min(100, Math.round((titleLength / 60) * 100))}%` }}
-            />
-          </div>
         </div>
 
         {/* Focus Keyword Input */}
@@ -203,9 +184,6 @@ export default function YoastSeoAnalyzer({
             placeholder="e.g., house construction bangalore"
             className="w-full bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-xs font-bold text-[#f2bd19] focus:outline-none focus:border-[#f2bd19]"
           />
-          <p className="text-[10px] text-slate-500 mt-1 font-medium">
-            Primary search phrase you want this page to rank for on Google.
-          </p>
         </div>
 
         {/* Meta Description Input */}
@@ -216,7 +194,7 @@ export default function YoastSeoAnalyzer({
             </label>
             <span
               className={`text-[10px] font-bold ${
-                isDescIdeal ? 'text-emerald-400' : isDescTooLong ? 'text-red-400' : 'text-amber-400'
+                isDescIdeal ? 'text-emerald-400' : descLength > 160 ? 'text-red-400' : 'text-amber-400'
               }`}
             >
               {descLength} / 160 chars
@@ -229,108 +207,179 @@ export default function YoastSeoAnalyzer({
             placeholder="Write a clear, persuasive 120-155 character description containing your focus keyword..."
             className="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 text-xs font-medium text-white focus:outline-none focus:border-[#f2bd19]"
           />
-          <div className="w-full h-1.5 bg-slate-800 rounded-full mt-2 overflow-hidden">
-            <div
-              className={`h-full transition-all ${
-                isDescIdeal ? 'bg-emerald-500' : isDescTooLong ? 'bg-red-500' : 'bg-amber-500'
-              }`}
-              style={{ width: `${Math.min(100, Math.round((descLength / 160) * 100))}%` }}
-            />
-          </div>
-        </div>
-
-        {/* Schema.org & Social Customization */}
-        <div>
-          <label className="block text-[10px] font-black uppercase tracking-wider text-slate-400 mb-1.5">
-            Schema.org Structured Data Type
-          </label>
-          <select
-            value={schemaType}
-            onChange={(e) => onChange({ schemaType: e.target.value as any })}
-            className="w-full bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-xs font-bold text-white focus:outline-none focus:border-[#f2bd19]"
-          >
-            <option value="Article">Article / BlogPosting Schema</option>
-            <option value="LocalBusiness">LocalBusiness / Contractor Schema</option>
-            <option value="Service">Service Detail Schema</option>
-            <option value="FAQPage">FAQPage Rich Snippet Schema</option>
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-[10px] font-black uppercase tracking-wider text-slate-400 mb-1.5">
-            OpenGraph Social Share Image URL
-          </label>
-          <input
-            type="text"
-            value={ogImage}
-            onChange={(e) => onChange({ ogImage: e.target.value })}
-            placeholder="/images/bangalore_hero_building.png"
-            className="w-full bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-xs font-mono text-slate-300 focus:outline-none focus:border-[#f2bd19]"
-          />
         </div>
       </div>
 
-      {/* Yoast SEO Health Checklist (Green / Yellow Checks) */}
-      <div className="bg-slate-950 rounded-2xl p-5 border border-slate-800 space-y-3">
-        <h4 className="text-xs font-black uppercase tracking-wider text-white">
-          📊 Yoast Analysis Checklist
-        </h4>
+      {/* Analyzer Tabs */}
+      <div className="bg-slate-950 rounded-2xl p-5 border border-slate-800 space-y-4">
+        <div className="flex border-b border-slate-800 gap-4 overflow-x-auto text-xs font-extrabold">
+          <button
+            type="button"
+            onClick={() => setActiveTab('checklist')}
+            className={`pb-2.5 transition-colors border-b-2 ${
+              activeTab === 'checklist' ? 'border-[#f2bd19] text-[#f2bd19]' : 'border-transparent text-slate-400 hover:text-white'
+            }`}
+          >
+            📋 SEO Analysis ({analysis.items.filter((i) => i.category === 'seo').length})
+          </button>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-semibold">
-          <div className="flex items-center gap-2">
-            <span className={isTitleIdeal ? 'text-emerald-400 font-bold' : 'text-amber-400'}>
-              {isTitleIdeal ? '🟢' : '🟡'}
-            </span>
-            <span className={isTitleIdeal ? 'text-slate-200' : 'text-slate-400'}>
-              Title Length: {titleLength} chars {isTitleIdeal ? '(Optimal)' : '(Target: 45-60)'}
-            </span>
-          </div>
+          <button
+            type="button"
+            onClick={() => setActiveTab('readability')}
+            className={`pb-2.5 transition-colors border-b-2 ${
+              activeTab === 'readability' ? 'border-[#f2bd19] text-[#f2bd19]' : 'border-transparent text-slate-400 hover:text-white'
+            }`}
+          >
+            📖 Readability Metrics ({analysis.metrics.wordCount} words)
+          </button>
 
-          <div className="flex items-center gap-2">
-            <span className={isDescIdeal ? 'text-emerald-400 font-bold' : 'text-amber-400'}>
-              {isDescIdeal ? '🟢' : '🟡'}
-            </span>
-            <span className={isDescIdeal ? 'text-slate-200' : 'text-slate-400'}>
-              Description Length: {descLength} chars {isDescIdeal ? '(Optimal)' : '(Target: 120-160)'}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span className={titleHasKeyword ? 'text-emerald-400 font-bold' : 'text-slate-500'}>
-              {titleHasKeyword ? '🟢' : '⚪'}
-            </span>
-            <span className={titleHasKeyword ? 'text-slate-200' : 'text-slate-400'}>
-              Keyword in Title {titleHasKeyword ? '(Found)' : '(Missing)'}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span className={descHasKeyword ? 'text-emerald-400 font-bold' : 'text-slate-500'}>
-              {descHasKeyword ? '🟢' : '⚪'}
-            </span>
-            <span className={descHasKeyword ? 'text-slate-200' : 'text-slate-400'}>
-              Keyword in Meta Description {descHasKeyword ? '(Found)' : '(Missing)'}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span className={slugHasKeyword ? 'text-emerald-400 font-bold' : 'text-slate-500'}>
-              {slugHasKeyword ? '🟢' : '⚪'}
-            </span>
-            <span className={slugHasKeyword ? 'text-slate-200' : 'text-slate-400'}>
-              Keyword in URL Slug {slugHasKeyword ? '(Found)' : '(Missing)'}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span className={contentKeywordCount > 0 ? 'text-emerald-400 font-bold' : 'text-slate-500'}>
-              {contentKeywordCount > 0 ? '🟢' : '⚪'}
-            </span>
-            <span className={contentKeywordCount > 0 ? 'text-slate-200' : 'text-slate-400'}>
-              Content Keyword Density: {contentKeywordCount} occurrence(s)
-            </span>
-          </div>
+          <button
+            type="button"
+            onClick={() => setActiveTab('internalLinks')}
+            className={`pb-2.5 transition-colors border-b-2 ${
+              activeTab === 'internalLinks' ? 'border-[#f2bd19] text-[#f2bd19]' : 'border-transparent text-slate-400 hover:text-white'
+            }`}
+          >
+            🔗 Internal Links ({linkSuggestions.length} found)
+          </button>
         </div>
+
+        {/* TAB 1: SEO CHECKLIST */}
+        {activeTab === 'checklist' && (
+          <div className="space-y-2">
+            {analysis.items
+              .filter((i) => i.category === 'seo')
+              .map((item) => (
+                <div
+                  key={item.id}
+                  className={`p-3 rounded-xl border text-xs flex items-center justify-between gap-3 ${
+                    item.status === 'pass'
+                      ? 'bg-emerald-950/40 border-emerald-800/60 text-emerald-300'
+                      : item.status === 'warn'
+                      ? 'bg-amber-950/40 border-amber-800/60 text-amber-300'
+                      : 'bg-rose-950/40 border-rose-800/60 text-rose-300'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-base leading-none">
+                      {item.status === 'pass' ? '🟢' : item.status === 'warn' ? '🟡' : '🔴'}
+                    </span>
+                    <div>
+                      <span className="font-bold block text-slate-100">{item.label}</span>
+                      <span className="text-[11px] opacity-90">{item.message}</span>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-slate-900 border border-slate-800 shrink-0">
+                    {item.status}
+                  </span>
+                </div>
+              ))}
+          </div>
+        )}
+
+        {/* TAB 2: READABILITY METRICS */}
+        {activeTab === 'readability' && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                <span className="text-[10px] font-bold text-slate-400 uppercase">Avg Sentence Length</span>
+                <p className="text-lg font-black text-white">{analysis.metrics.avgSentenceLength} words</p>
+                <span className="text-[10px] text-slate-500">Target: &lt; 20 words</span>
+              </div>
+
+              <div className="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                <span className="text-[10px] font-bold text-slate-400 uppercase">Passive Voice</span>
+                <p className="text-lg font-black text-white">{analysis.metrics.passiveVoicePercent}%</p>
+                <span className="text-[10px] text-slate-500">Target: &lt; 15%</span>
+              </div>
+
+              <div className="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                <span className="text-[10px] font-bold text-slate-400 uppercase">Transition Words</span>
+                <p className="text-lg font-black text-white">{analysis.metrics.transitionWordsPercent}%</p>
+                <span className="text-[10px] text-slate-500">Target: &gt; 20%</span>
+              </div>
+
+              <div className="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                <span className="text-[10px] font-bold text-slate-400 uppercase">Keyword Density</span>
+                <p className="text-lg font-black text-white">{analysis.metrics.keywordDensityPercent}%</p>
+                <span className="text-[10px] text-slate-500">Target: 0.5% - 2.5%</span>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              {analysis.items
+                .filter((i) => i.category === 'readability')
+                .map((item) => (
+                  <div
+                    key={item.id}
+                    className={`p-3 rounded-xl border text-xs flex items-center justify-between gap-3 ${
+                      item.status === 'pass'
+                        ? 'bg-emerald-950/40 border-emerald-800/60 text-emerald-300'
+                        : 'bg-amber-950/40 border-amber-800/60 text-amber-300'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="text-base leading-none">{item.status === 'pass' ? '🟢' : '🟡'}</span>
+                      <div>
+                        <span className="font-bold block text-slate-100">{item.label}</span>
+                        <span className="text-[11px] opacity-90">{item.message}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        )}
+
+        {/* TAB 3: INTERNAL LINKS SUGGESTIONS */}
+        {activeTab === 'internalLinks' && (
+          <div className="space-y-3">
+            {copiedSnippet && (
+              <div className="p-2.5 bg-emerald-950 border border-emerald-800 text-emerald-300 rounded-xl text-xs font-semibold">
+                Copied markdown link: <code className="bg-slate-900 px-1.5 py-0.5 rounded text-white">{copiedSnippet}</code>
+              </div>
+            )}
+
+            {linkSuggestions.length === 0 ? (
+              <p className="text-xs text-slate-400 text-center py-4">
+                No matching internal link anchor phrases found in current content.
+              </p>
+            ) : (
+              linkSuggestions.map((s, idx) => (
+                <div
+                  key={idx}
+                  className="p-3 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-between gap-3 text-xs"
+                >
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-white">Phrase: "{s.phrase}"</span>
+                      {s.isAlreadyLinked ? (
+                        <span className="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono">
+                          Already Linked
+                        </span>
+                      ) : (
+                        <span className="text-[10px] bg-emerald-950 text-emerald-400 border border-emerald-800/60 px-2 py-0.5 rounded font-mono">
+                          Opportunity
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-[11px] text-slate-400">
+                      Points to: <span className="text-amber-400">{s.targetTitle}</span> ({s.targetPath})
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => copyToClipboard(s.markdownSnippet)}
+                    className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs rounded-lg transition shrink-0"
+                  >
+                    Copy Markdown Link
+                  </button>
+                </div>
+              ))
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

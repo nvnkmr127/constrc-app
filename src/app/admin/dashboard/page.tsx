@@ -633,6 +633,7 @@ export default function AdminDashboardPage() {
                 <YoastSeoAnalyzer
                   seoState={yoastState}
                   onChange={(updated) => setYoastState((prev) => ({ ...prev, ...updated }))}
+                  extraPublishedPosts={publishedBlogs.map((b) => ({ title: b.title, path: `/news/${b.slug}` }))}
                 />
 
                 <button
