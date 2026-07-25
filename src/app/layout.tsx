@@ -1,22 +1,15 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { SITE_URL } from '@/lib/site';
+import { resolveSeo } from "@/lib/seo/resolve";
 import CallModal from "@/components/CallModal";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: "Screw Wood - Construction Company in Bangalore",
-    template: "%s | Screw Wood",
-  },
-  description: "Innovative construction and interior solutions tailored to your vision.",
-  openGraph: {
-    siteName: "Screw Wood",
-    type: "website",
-    locale: "en_IN",
-  },
-  robots: { index: true, follow: true },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const baseSeo = await resolveSeo('/');
+  return {
+    ...baseSeo,
+    metadataBase: new URL('https://www.screwwood.in'),
+  };
+}
 
 export default function RootLayout({
   children,
