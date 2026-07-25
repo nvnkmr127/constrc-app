@@ -1,7 +1,5 @@
-import 'server-only';
-
-// Lightweight, zero-dependency Supabase client for Server Actions and Server Components
-// Uses the Service Role Key for administrative DB access. NEVER import this file in client components.
+// Lightweight, zero-dependency Supabase client for Server Actions, Middleware, and Server Components
+// Uses the Service Role Key for administrative DB access. NEVER import this file in browser client components.
 
 const SUPABASE_URL = (process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co').replace(/\/$/, '');
 const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';

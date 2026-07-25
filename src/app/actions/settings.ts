@@ -154,6 +154,14 @@ export async function updateSettings(input: unknown): Promise<ActionResult<SeoSe
       return { ok: false, error: error.message };
     }
 
+    // Regenerate global JSON-LD schemas with new NAP values
+    try {
+      const { syncGlobalSchemasFromSettings } = await import('@/app/actions/schema');
+      await syncGlobalSchemasFromSettings();
+    } catch {
+      // Ignore schema sync failure
+    }
+
     revalidatePath('/', 'layout');
 
     return {
