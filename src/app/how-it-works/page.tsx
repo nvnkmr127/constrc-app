@@ -107,14 +107,7 @@ export default function HowItWorksPage() {
   const [selectedStep, setSelectedStep] = useState<string>('01');
   const [activeAppTab, setActiveAppTab] = useState<'overview' | 'photo' | 'audit' | 'escrow'>('overview');
 
-  // Interactive Calculator State
-  const [plotArea, setPlotArea] = useState<number>(1200);
-  const [floors, setFloors] = useState<number>(2);
-  const [packageTier, setPackageTier] = useState<number>(2049); // price per sqft
 
-  const totalBuiltupArea = plotArea * floors;
-  const estimatedCost = totalBuiltupArea * packageTier;
-  const estimatedMonths = Math.max(5, Math.ceil(floors * 2.5 + (plotArea > 2000 ? 2 : 0)));
 
   const filteredSteps = steps.filter(
     (s) => activePhase === 'all' || s.phase === activePhase
@@ -427,127 +420,7 @@ export default function HowItWorksPage() {
           </div>
         </section>
 
-        {/* Interactive Construction Estimator Widget */}
-        <section className="py-24 bg-orange-50/50 border-y border-orange-100">
-          <div className="max-w-5xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary-orange/10 text-primary-orange text-xs font-bold uppercase tracking-widest mb-4">
-                Instant Estimator
-              </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
-                Estimate Your Construction Cost &amp; Timeline
-              </h2>
-              <p className="text-slate-600 text-sm font-medium">
-                Adjust your plot size, floors, and package to preview your project metrics.
-              </p>
-            </div>
 
-            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-200/80 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              {/* Controls */}
-              <div className="lg:col-span-7 space-y-6">
-                <div>
-                  <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">
-                    Plot Dimensions / Area (sq.ft): {plotArea} sq.ft
-                  </label>
-                  <div className="flex flex-wrap gap-2">
-                    {[1200, 1500, 2400, 4000].map((size) => (
-                      <button
-                        key={size}
-                        onClick={() => setPlotArea(size)}
-                        className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                          plotArea === size
-                            ? 'bg-primary-orange text-white shadow-md'
-                            : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                        }`}
-                      >
-                        {size} sq.ft {size === 1200 ? '(30x40)' : size === 2400 ? '(40x60)' : ''}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">
-                    Number of Floors: G + {floors - 1} Floors ({totalBuiltupArea} sq.ft builtup)
-                  </label>
-                  <div className="flex gap-2">
-                    {[1, 2, 3, 4].map((f) => (
-                      <button
-                        key={f}
-                        onClick={() => setFloors(f)}
-                        className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                          floors === f
-                            ? 'bg-primary-orange text-white shadow-md'
-                            : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                        }`}
-                      >
-                        G+{f - 1}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">
-                    Construction Package Tier
-                  </label>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      { rate: 1849, label: 'Essential @ ₹1,849/sq.ft' },
-                      { rate: 2049, label: 'Prime @ ₹2,049/sq.ft' },
-                      { rate: 2349, label: 'Signature @ ₹2,349/sq.ft' },
-                      { rate: 2699, label: 'Elite @ ₹2,699/sq.ft' },
-                    ].map((pkg) => (
-                      <button
-                        key={pkg.rate}
-                        onClick={() => setPackageTier(pkg.rate)}
-                        className={`px-3 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
-                          packageTier === pkg.rate
-                            ? 'bg-primary-orange text-white shadow-md'
-                            : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                        }`}
-                      >
-                        {pkg.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Estimation Display Box */}
-              <div className="lg:col-span-5 bg-slate-900 text-white rounded-3xl p-8 shadow-2xl flex flex-col justify-between border border-slate-800 text-center">
-                <span className="text-xs font-bold uppercase tracking-widest text-primary-orange mb-2">
-                  Estimated Summary
-                </span>
-                <div className="my-4">
-                  <p className="text-xs text-slate-400 uppercase font-semibold">Total Estimated Cost</p>
-                  <h3 className="text-3xl md:text-4xl font-black text-white mt-1">
-                    ₹{(estimatedCost / 100000).toFixed(2)} Lacs
-                  </h3>
-                  <p className="text-[11px] text-slate-400 mt-1">
-                    Includes materials, labor &amp; architectural designs
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-slate-800 grid grid-cols-2 gap-4 text-left">
-                  <div>
-                    <p className="text-[10px] text-slate-400 uppercase font-semibold">Builtup Area</p>
-                    <p className="font-extrabold text-sm text-white">{totalBuiltupArea} sq.ft</p>
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-slate-400 uppercase font-semibold">Timeline</p>
-                    <p className="font-extrabold text-sm text-emerald-400">{estimatedMonths} Months</p>
-                  </div>
-                </div>
-                <Link
-                  href="/contact"
-                  className="mt-6 w-full bg-primary-orange hover:bg-orange-600 text-white font-bold py-3 rounded-2xl text-xs uppercase tracking-wider shadow-md text-center"
-                >
-                  Get Detailed Quote →
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* FAQ Section */}
         <section className="py-24 bg-gray-50">
