@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import Services from "@/components/Services";
 import PackageComparison from "@/components/PackageComparison";
 import MaintenanceComparison from "@/components/MaintenanceComparison";
+import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
 import type { Metadata } from 'next';
@@ -21,6 +22,7 @@ export default function ServicesPage() {
         <Services />
         <PackageComparison />
         <MaintenanceComparison />
+        <FAQ />
       </main>
       <Footer />
     </>
