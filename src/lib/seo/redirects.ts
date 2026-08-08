@@ -112,9 +112,9 @@ export function detectRedirectChainOrLoop(
   const activeList = existingRedirects.filter((r) => !currentId || r.id !== currentId);
 
   // Check 1: Does destination redirect to something else? (Chain or Loop)
-  let currentTarget = normDest;
+  const currentTarget = normDest;
   const visited = new Set<string>([normSource]);
-  let hops = 0;
+  const hops = 0;
 
   while (currentTarget && hops < 10) {
     if (visited.has(currentTarget)) {
